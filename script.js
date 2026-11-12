@@ -13,20 +13,20 @@ const emojisPorCategoria = {
 // Exemplos de título e descrição por categoria
 const exemplosPorCategoria = {
     familia: {
-        titulo: 'Ex: Almoço de domingo em família',
-        descricao: 'Ex: Todo mundo junto na mesa, risadas, comida boa e aquele abraço demorado no final...'
+        titulo: 'Almoço de domingo em família',
+        descricao: 'Todo mundo junto na mesa, risadas, comida boa e aquele abraço demorado no final...'
     },
     amigos: {
-        titulo: 'Ex: Sábado com os amigos no parque',
-        descricao: 'Ex: Solzinho, conversa fiada, foto em grupo e aquela sensação gostosa de amizade verdadeira...'
+        titulo: 'Sábado com os amigos no parque',
+        descricao: 'Solzinho, conversa fiada, foto em grupo e aquela sensação gostosa de amizade verdadeira...'
     },
     pets: {
-        titulo: 'Ex: Banho da Flora',
-        descricao: 'Ex: Ela ficou toda molhadinha e engraçada. Saiu correndo pela casa depois, mas valeu cada segundo de fofura...'
+        titulo: 'Banho da Flora',
+        descricao: 'Ela ficou toda molhadinha e engraçada. Saiu correndo pela casa depois, mas valeu cada segundo de fofura...'
     },
     outros: {
-        titulo: 'Ex: Um momento especial',
-        descricao: 'Ex: Conte o que aconteceu, o que sentiu, quem estava junto...'
+        titulo: 'Um momento especial',
+        descricao: 'Conte o que aconteceu, o que sentiu, quem estava junto...'
     }
 };
 
@@ -158,7 +158,7 @@ function limparFoto() {
     document.getElementById('removerFoto').style.display = 'none';
 }
 
-// Atualiza emojis + exemplos de título e descrição
+// Atualiza emojis + preenche título e placeholder da descrição
 function atualizarSugestoesPorCategoria() {
     const categoria = document.getElementById('categoria').value;
     const container = document.getElementById('sugestoesEmoji');
@@ -181,13 +181,16 @@ function atualizarSugestoesPorCategoria() {
         });
     }
 
-    // Exemplos de título e descrição
+    // Coloca o exemplo no título e na descrição
     if (categoria && exemplosPorCategoria[categoria]) {
-        inputTitulo.placeholder = exemplosPorCategoria[categoria].titulo;
+        inputTitulo.value = exemplosPorCategoria[categoria].titulo;
         inputDescricao.placeholder = exemplosPorCategoria[categoria].descricao;
+        inputDescricao.value = '';
     } else {
-        inputTitulo.placeholder = 'Ex: Domingo em família no parque';
+        inputTitulo.value = '';
+        inputTitulo.placeholder = 'Título do momento';
         inputDescricao.placeholder = 'Conte o que aconteceu, o que sentiu, quem estava junto...';
+        inputDescricao.value = '';
     }
 }
 
@@ -267,6 +270,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     btnRemover.addEventListener('click', limparFoto);
 
-    // Quando muda a categoria: emojis + exemplos de texto
+    // Quando muda a categoria: emojis + preenche o título
     document.getElementById('categoria').addEventListener('change', atualizarSugestoesPorCategoria);
 });
