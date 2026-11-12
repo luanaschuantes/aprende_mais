@@ -94,6 +94,22 @@
                         <textarea id="descricao" rows="4" placeholder="Conte o que aconteceu, o que sentiu, quem estava junto..." required></textarea>
                     </div>
 
+                    <!-- Campo de foto -->
+                    <div class="campo">
+                        <label>Foto do momento</label>
+                        <div class="area-foto">
+                            <label for="foto" class="btn-foto">
+                                📷 Escolher foto da galeria
+                            </label>
+                            <input type="file" id="foto" accept="image/*" hidden>
+                            <button type="button" id="removerFoto" class="btn-remover-foto" style="display:none;">Remover foto</button>
+                        </div>
+                        <div id="previewFoto" class="preview-foto" style="display:none;">
+                            <img id="imgPreview" src="" alt="Pré-visualização">
+                        </div>
+                        <p class="dica-foto">Dica: escolha fotos não muito grandes para funcionar melhor</p>
+                    </div>
+
                     <div class="campo">
                         <label for="emoji">Emoji que representa (opcional)</label>
                         <input type="text" id="emoji" placeholder="Ex: 😊 🌟 🐶" maxlength="4">
@@ -114,7 +130,8 @@
                     bagunças dos pets e todos os pedacinhos especiais da vida.
                 </p>
                 <p>
-                    Tudo fica salvo aqui no seu navegador. É simples, fofo e só seu.
+                    Você pode adicionar fotos direto da galeria do celular ou computador.
+                    Tudo fica salvo aqui no seu navegador.
                 </p>
                 <div class="assinatura">Com amor ✨</div>
             </div>
