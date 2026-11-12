@@ -3,91 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BioMentoria</title>
-    <link rel="stylesheet" href="estilo.css">
+    <title>Meu Arquivo de Memória</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <nav>
-        <a href="#">Home</a>
-        <a href="#cadastro">Cadastro</a>
-        <a href="#alunos">Alunos</a>
-        <a href="#avaliacoes">Avaliações</a>
-    </nav>
-
-    <header>
-        <h1>BioMentoria</h1>
-        <p>Mentoria de Biologia - Profª Luana Schuantes</p>
-    </header>
-
-    <div class="container">
-
-        <div class="card">
-            <h2>Sobre a Mentoria</h2>
-            <p>
-                Plataforma voltada para estudantes que desejam
-                melhorar seu desempenho em Biologia para ENEM,
-                vestibulares e concursos.
-            </p>
-        </div>
-
-        <div class="card" id="cadastro">
-            <h2>Cadastro de Aluno</h2>
-
-            <input type="text" id="nome" placeholder="Nome">
-
-            <input type="email" id="email" placeholder="E-mail">
-
-            <button onclick="cadastrarAluno()">
-                Cadastrar
-            </button>
-        </div>
-
-        <div class="card" id="alunos">
-            <h2>Alunos Matriculados</h2>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>E-mail</th>
-                    </tr>
-                </thead>
-
-                <tbody id="listaAlunos"></tbody>
-            </table>
-        </div>
-
-        <div class="card" id="avaliacoes">
-            <h2>Avaliações dos Alunos</h2>
-
-            <div class="avaliacao">
-                ⭐⭐⭐⭐⭐
-                <p>Excelente didática. Aprendi muito!</p>
-                <strong>Maria Oliveira</strong>
-            </div>
-
-            <div class="avaliacao">
-                ⭐⭐⭐⭐⭐
-                <p>Aulas objetivas e fáceis de entender.</p>
-                <strong>João Pereira</strong>
-            </div>
-
-            <div class="avaliacao">
-                ⭐⭐⭐⭐⭐
-                <p>Consegui aumentar minha nota no ENEM.</p>
-                <strong>Ana Costa</strong>
-            </div>
-
-        </div>
-
+    <div class="bg-shapes">
+        <div class="shape shape-1">✨</div>
+        <div class="shape shape-2">🌸</div>
+        <div class="shape shape-3">💖</div>
+        <div class="shape shape-4">🌟</div>
     </div>
 
+    <nav>
+        <div class="nav-logo">📜 Meu Arquivo de Memória</div>
+        <div class="nav-links">
+            <a href="#inicio">Início</a>
+            <a href="#memorias">Memórias</a>
+            <a href="#adicionar">Adicionar</a>
+            <a href="#sobre">Sobre</a>
+        </div>
+    </nav>
+
+    <header id="inicio">
+        <div class="header-content">
+            <h1>Meu Arquivo de Memória</h1>
+            <p class="subtitle">Um cantinho fofo para guardar os momentos mais especiais da vida</p>
+            <p class="tagline">Família • Amigos • Pets • Momentos que aquecem o coração</p>
+            <a href="#adicionar" class="btn-principal">✨ Guardar um momento</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Filtros -->
+        <section class="filtros" id="memorias">
+            <h2>Minhas Memórias</h2>
+            <div class="botoes-filtro">
+                <button class="filtro ativo" data-filtro="todos">Todos</button>
+                <button class="filtro" data-filtro="familia">🏠 Família</button>
+                <button class="filtro" data-filtro="amigos">🤝 Amigos</button>
+                <button class="filtro" data-filtro="pets">🐾 Pets</button>
+                <button class="filtro" data-filtro="outros">✨ Outros</button>
+            </div>
+        </section>
+
+        <!-- Lista de memórias -->
+        <section class="container-memorias">
+            <div id="listaMemorias" class="grade-memorias">
+                <!-- Preenchido pelo JS -->
+            </div>
+            <div id="vazio" class="estado-vazio" style="display:none;">
+                <div class="emoji-grande">📝</div>
+                <p>Ainda não há memórias por aqui...</p>
+                <p>Que tal guardar o primeiro momento especial?</p>
+            </div>
+        </section>
+
+        <!-- Formulário para adicionar -->
+        <section class="secao-adicionar" id="adicionar">
+            <div class="card-formulario">
+                <h2>🎁 Guardar um novo momento</h2>
+                <p class="form-desc">Preencha os campos e eternize esse carinho</p>
+
+                <form id="formMemoria">
+                    <div class="campo">
+                        <label for="titulo">Título do momento</label>
+                        <input type="text" id="titulo" placeholder="Ex: Domingo em família no parque" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="categoria">Categoria</label>
+                        <select id="categoria" required>
+                            <option value="">Escolha...</option>
+                            <option value="familia">🏠 Família</option>
+                            <option value="amigos">🤝 Amigos</option>
+                            <option value="pets">🐾 Pets</option>
+                            <option value="outros">✨ Outros momentos</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label for="data">Data</label>
+                        <input type="date" id="data" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="descricao">Como foi esse momento?</label>
+                        <textarea id="descricao" rows="4" placeholder="Conte o que aconteceu, o que sentiu, quem estava junto..." required></textarea>
+                    </div>
+
+                    <div class="campo">
+                        <label for="emoji">Emoji que representa (opcional)</label>
+                        <input type="text" id="emoji" placeholder="Ex: 😊 🌟 🐶" maxlength="4">
+                    </div>
+
+                    <button type="submit" class="btn-salvar">💖 Guardar no meu arquivo</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Sobre -->
+        <section class="secao-sobre" id="sobre">
+            <div class="card-sobre">
+                <h2>Sobre este cantinho</h2>
+                <p>
+                    O <strong>Meu Arquivo de Memória</strong> foi feito com carinho para ser o lugar onde você guarda
+                    os momentos que fazem o coração aquecer: risadas em família, encontros com amigos,
+                    bagunças dos pets e todos os pedacinhos especiais da vida.
+                </p>
+                <p>
+                    Tudo fica salvo aqui no seu navegador. É simples, fofo e só seu.
+                </p>
+                <div class="assinatura">Com amor ✨</div>
+            </div>
+        </section>
+    </main>
+
     <footer>
-        © 2026 BioMentoria - Profª Luana Schuantes
+        <p>📜 Meu Arquivo de Memória</p>
+        <p class="footer-sub">Guardando momentos especiais desde agora</p>
     </footer>
 
     <script src="script.js"></script>
-
 </body>
 </html>
