@@ -10,37 +10,6 @@ const emojisPorCategoria = {
     outros: ['✨', '🌟', '🎈', '☀️', '🌈', '💖', '🌺', '🎂', '💫', '🌞']
 };
 
-// Memórias de exemplo
-const memoriasIniciais = [
-    {
-        id: 1,
-        titulo: 'Almoço de domingo em família',
-        categoria: 'familia',
-        data: '2025-11-02',
-        descricao: 'Todo mundo junto na mesa, risadas, comida boa e aquele abraço demorado no final. Momentos assim valem ouro.',
-        emoji: '🍴',
-        foto: null
-    },
-    {
-        id: 2,
-        titulo: 'Passeio no parque com os amigos',
-        categoria: 'amigos',
-        data: '2025-10-18',
-        descricao: 'Solzinho, conversa fiada, foto em grupo e aquela sensação gostosa de amizade verdadeira.',
-        emoji: '🌿',
-        foto: null
-    },
-    {
-        id: 3,
-        titulo: 'Primeiro banho do Thor',
-        categoria: 'pets',
-        data: '2025-09-05',
-        descricao: 'Ele ficou todo molhadinho e engraçado. Saiu correndo pela casa depois, mas valeu cada segundo de fofura.',
-        emoji: '🐶',
-        foto: null
-    }
-];
-
 let memorias = [];
 let filtroAtual = 'todos';
 let fotoAtualBase64 = null;
@@ -50,8 +19,7 @@ function carregarMemorias() {
     if (salvas) {
         memorias = JSON.parse(salvas);
     } else {
-        memorias = [...memoriasIniciais];
-        salvarMemorias();
+        memorias = []; // Começa vazio — você adiciona suas próprias memórias e fotos
     }
 }
 
@@ -185,7 +153,6 @@ function atualizarSugestoesEmoji() {
         `<button type="button" class="btn-emoji" data-emoji="${emoji}">${emoji}</button>`
     ).join('');
 
-    // Clique nos botões de emoji
     container.querySelectorAll('.btn-emoji').forEach(btn => {
         btn.addEventListener('click', () => {
             document.getElementById('emoji').value = btn.dataset.emoji;
