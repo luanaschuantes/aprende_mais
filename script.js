@@ -10,6 +10,26 @@ const emojisPorCategoria = {
     outros: ['✨', '🌟', '🎈', '☀️', '🌈', '💖', '🌺', '🎂', '💫', '🌞']
 };
 
+// Exemplos de título e descrição por categoria
+const exemplosPorCategoria = {
+    familia: {
+        titulo: 'Ex: Almoço de domingo em família',
+        descricao: 'Ex: Todo mundo junto na mesa, risadas, comida boa e aquele abraço demorado no final...'
+    },
+    amigos: {
+        titulo: 'Ex: Sábado com os amigos no parque',
+        descricao: 'Ex: Solzinho, conversa fiada, foto em grupo e aquela sensação gostosa de amizade verdadeira...'
+    },
+    pets: {
+        titulo: 'Ex: Banho da Flora',
+        descricao: 'Ex: Ela ficou toda molhadinha e engraçada. Saiu correndo pela casa depois, mas valeu cada segundo de fofura...'
+    },
+    outros: {
+        titulo: 'Ex: Um momento especial',
+        descricao: 'Ex: Conte o que aconteceu, o que sentiu, quem estava junto...'
+    }
+};
+
 let memorias = [];
 let filtroAtual = 'todos';
 let fotoAtualBase64 = null;
@@ -19,7 +39,7 @@ function carregarMemorias() {
     if (salvas) {
         memorias = JSON.parse(salvas);
     } else {
-        memorias = []; // Começa vazio — você adiciona suas próprias memórias e fotos
+        memorias = [];
     }
 }
 
@@ -138,26 +158,37 @@ function limparFoto() {
     document.getElementById('removerFoto').style.display = 'none';
 }
 
-// Atualiza as sugestões de emoji conforme a categoria
-function atualizarSugestoesEmoji() {
+// Atualiza emojis + exemplos de título e descrição
+function atualizarSugestoesPorCategoria() {
     const categoria = document.getElementById('categoria').value;
     const container = document.getElementById('sugestoesEmoji');
+    const inputTitulo = document.getElementById('titulo');
+    const inputDescricao = document.getElementById('descricao');
 
+    // Emojis
     if (!categoria || !emojisPorCategoria[categoria]) {
         container.innerHTML = '<span class="dica-sugestao">Escolha a categoria para ver sugestões ✨</span>';
-        return;
+    } else {
+        const lista = emojisPorCategoria[categoria];
+        container.innerHTML = lista.map(emoji =>
+            `<button type="button" class="btn-emoji" data-emoji="${emoji}">${emoji}</button>`
+        ).join('');
+
+        container.querySelectorAll('.btn-emoji').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.getElementById('emoji').value = btn.dataset.emoji;
+            });
+        });
     }
 
-    const lista = emojisPorCategoria[categoria];
-    container.innerHTML = lista.map(emoji =>
-        `<button type="button" class="btn-emoji" data-emoji="${emoji}">${emoji}</button>`
-    ).join('');
-
-    container.querySelectorAll('.btn-emoji').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.getElementById('emoji').value = btn.dataset.emoji;
-        });
-    });
+    // Exemplos de título e descrição
+    if (categoria && exemplosPorCategoria[categoria]) {
+        inputTitulo.placeholder = exemplosPorCategoria[categoria].titulo;
+        inputDescricao.placeholder = exemplosPorCategoria[categoria].descricao;
+    } else {
+        inputTitulo.placeholder = 'Ex: Domingo em família no parque';
+        inputDescricao.placeholder = 'Conte o que aconteceu, o que sentiu, quem estava junto...';
+    }
 }
 
 async function adicionarMemoria(evento) {
@@ -190,7 +221,7 @@ async function adicionarMemoria(evento) {
 
     document.getElementById('formMemoria').reset();
     limparFoto();
-    atualizarSugestoesEmoji();
+    atualizarSugestoesPorCategoria();
 
     alert('💖 Momento guardado com carinho no seu arquivo!');
     document.getElementById('memorias').scrollIntoView({ behavior: 'smooth' });
@@ -236,6 +267,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     btnRemover.addEventListener('click', limparFoto);
 
-    // Sugestões de emoji mudam com a categoria
-    document.getElementById('categoria').addEventListener('change', atualizarSugestoesEmoji);
+    // Quando muda a categoria: emojis + exemplos de texto
+    document.getElementById('categoria').addEventListener('change', atualizarSugestoesPorCategoria);
 });
