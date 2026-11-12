@@ -2,7 +2,6 @@
 
 const CHAVE_STORAGE = 'meuArquivoDeMemoria';
 
-// Sugestões de emoji por categoria
 const emojisPorCategoria = {
     familia: ['👨‍👩‍👧‍👦', '🏠', '❤️', '👩‍👩‍👧', '👨‍👨‍👦', '👶', '👵', '👴', '🥰', '💕'],
     amigos: ['🤝', '👯', '🎉', '😊', '🤗', '💕', '🍻', '👥', '✨', '😘'],
@@ -10,7 +9,6 @@ const emojisPorCategoria = {
     outros: ['✨', '🌟', '🎈', '☀️', '🌈', '💖', '🌺', '🎂', '💫', '🌞']
 };
 
-// Exemplos de título e descrição por categoria
 const exemplosPorCategoria = {
     familia: {
         titulo: 'Almoço de domingo em família',
@@ -36,11 +34,7 @@ let fotoAtualBase64 = null;
 
 function carregarMemorias() {
     const salvas = localStorage.getItem(CHAVE_STORAGE);
-    if (salvas) {
-        memorias = JSON.parse(salvas);
-    } else {
-        memorias = [];
-    }
+    memorias = salvas ? JSON.parse(salvas) : [];
 }
 
 function salvarMemorias() {
@@ -48,7 +42,6 @@ function salvarMemorias() {
         localStorage.setItem(CHAVE_STORAGE, JSON.stringify(memorias));
     } catch (e) {
         alert('O espaço de armazenamento está cheio. Tente usar fotos menores ou apague algumas memórias antigas.');
-        console.error(e);
     }
 }
 
@@ -68,14 +61,31 @@ function nomeCategoria(cat) {
     return mapa[cat] || cat;
 }
 
+// ===== Navegação por abas =====
+function irPara(tab) {
+    document.querySelectorAll('.pagina').forEach(p => p.classList.remove('ativa'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('ativo'));
+
+    const pagina = document.getElementById('pagina-' + tab);
+    if (pagina) pagina.classList.add('ativa');
+
+    document.querySelectorAll('.tab').forEach(t => {
+        if (t.dataset.tab === tab) t.classList.add('ativo');
+    });
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    if (tab === 'album') renderizarMemorias();
+}
+
 function renderizarMemorias() {
     const lista = document.getElementById('listaMemorias');
     const vazio = document.getElementById('vazio');
+    if (!lista || !vazio) return;
 
-    let filtradas = memorias;
-    if (filtroAtual !== 'todos') {
-        filtradas = memorias.filter(m => m.categoria === filtroAtual);
-    }
+    let filtradas = filtroAtual === 'todos'
+        ? memorias
+        : memorias.filter(m => m.categoria === filtroAtual);
 
     filtradas = [...filtradas].sort((a, b) => (b.data || '').localeCompare(a.data || ''));
 
@@ -86,12 +96,11 @@ function renderizarMemorias() {
     }
 
     vazio.style.display = 'none';
-
     lista.innerHTML = filtradas.map(m => {
         const temFoto = m.foto && m.foto.length > 10;
         return `
-        <article class="card-memoria" data-id="${m.id}">
-            <button class="btn-apagar" onclick="apagarMemoria(${m.id})" title="Apagar memória">🗑️</button>
+        <article class="card-memoria">
+            <button class="btn-apagar" onclick="apagarMemoria(${m.id})" title="Apagar">🗑️</button>
             ${temFoto ? `<img class="foto-memoria" src="${m.foto}" alt="${m.titulo}">` : ''}
             <div class="conteudo-card">
                 <div class="emoji-memoria">${m.emoji || '✨'}</div>
@@ -102,8 +111,8 @@ function renderizarMemorias() {
                 </div>
                 <p class="descricao">${m.descricao}</p>
             </div>
-        </article>
-    `}).join('');
+        </article>`;
+    }).join('');
 }
 
 function apagarMemoria(id) {
@@ -119,28 +128,17 @@ function processarFoto(arquivo) {
             resolve(null);
             return;
         }
-
         const reader = new FileReader();
-        reader.onload = function(e) {
+        reader.onload = e => {
             const img = new Image();
-            img.onload = function() {
+            img.onload = () => {
                 const MAX = 900;
-                let width = img.width;
-                let height = img.height;
-
-                if (width > MAX) {
-                    height = Math.round(height * (MAX / width));
-                    width = MAX;
-                }
-
+                let w = img.width, h = img.height;
+                if (w > MAX) { h = Math.round(h * (MAX / w)); w = MAX; }
                 const canvas = document.createElement('canvas');
-                canvas.width = width;
-                canvas.height = height;
-                const ctx = canvas.getContext('2d');
-                ctx.drawImage(img, 0, 0, width, height);
-
-                const base64 = canvas.toDataURL('image/jpeg', 0.75);
-                resolve(base64);
+                canvas.width = w; canvas.height = h;
+                canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+                resolve(canvas.toDataURL('image/jpeg', 0.75));
             };
             img.onerror = reject;
             img.src = e.target.result;
@@ -158,22 +156,18 @@ function limparFoto() {
     document.getElementById('removerFoto').style.display = 'none';
 }
 
-// Atualiza emojis + preenche título e placeholder da descrição
 function atualizarSugestoesPorCategoria() {
     const categoria = document.getElementById('categoria').value;
     const container = document.getElementById('sugestoesEmoji');
     const inputTitulo = document.getElementById('titulo');
     const inputDescricao = document.getElementById('descricao');
 
-    // Emojis
     if (!categoria || !emojisPorCategoria[categoria]) {
         container.innerHTML = '<span class="dica-sugestao">Escolha a categoria para ver sugestões ✨</span>';
     } else {
-        const lista = emojisPorCategoria[categoria];
-        container.innerHTML = lista.map(emoji =>
-            `<button type="button" class="btn-emoji" data-emoji="${emoji}">${emoji}</button>`
+        container.innerHTML = emojisPorCategoria[categoria].map(e =>
+            `<button type="button" class="btn-emoji" data-emoji="${e}">${e}</button>`
         ).join('');
-
         container.querySelectorAll('.btn-emoji').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.getElementById('emoji').value = btn.dataset.emoji;
@@ -181,14 +175,13 @@ function atualizarSugestoesPorCategoria() {
         });
     }
 
-    // Coloca o exemplo no título e na descrição
     if (categoria && exemplosPorCategoria[categoria]) {
         inputTitulo.value = exemplosPorCategoria[categoria].titulo;
         inputDescricao.placeholder = exemplosPorCategoria[categoria].descricao;
         inputDescricao.value = '';
     } else {
         inputTitulo.value = '';
-        inputTitulo.placeholder = 'Título do momento';
+        inputTitulo.placeholder = 'Escolha a categoria para ver um exemplo';
         inputDescricao.placeholder = 'Conte o que aconteceu, o que sentiu, quem estava junto...';
         inputDescricao.value = '';
     }
@@ -208,32 +201,35 @@ async function adicionarMemoria(evento) {
         return;
     }
 
-    const nova = {
+    memorias.push({
         id: Date.now(),
-        titulo,
-        categoria,
-        data,
-        descricao,
-        emoji,
+        titulo, categoria, data, descricao, emoji,
         foto: fotoAtualBase64 || null
-    };
-
-    memorias.push(nova);
+    });
     salvarMemorias();
-    renderizarMemorias();
 
     document.getElementById('formMemoria').reset();
     limparFoto();
     atualizarSugestoesPorCategoria();
 
-    alert('💖 Momento guardado com carinho no seu arquivo!');
-    document.getElementById('memorias').scrollIntoView({ behavior: 'smooth' });
+    alert('💖 Momento guardado com carinho!');
+    irPara('album');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     carregarMemorias();
-    renderizarMemorias();
 
+    // Abas
+    document.querySelectorAll('.tab').forEach(tab => {
+        tab.addEventListener('click', () => irPara(tab.dataset.tab));
+    });
+
+    // Botões que mudam de aba
+    document.querySelectorAll('[data-ir]').forEach(btn => {
+        btn.addEventListener('click', () => irPara(btn.dataset.ir));
+    });
+
+    // Filtros
     document.querySelectorAll('.filtro').forEach(btn => {
         btn.addEventListener('click', () => {
             document.querySelectorAll('.filtro').forEach(b => b.classList.remove('ativo'));
@@ -249,27 +245,20 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('data').value = hoje;
 
     // Foto
-    const inputFoto = document.getElementById('foto');
-    const btnRemover = document.getElementById('removerFoto');
-
-    inputFoto.addEventListener('change', async function() {
+    document.getElementById('foto').addEventListener('change', async function () {
         const arquivo = this.files[0];
         if (!arquivo) return;
-
         try {
-            const base64 = await processarFoto(arquivo);
-            fotoAtualBase64 = base64;
-            document.getElementById('imgPreview').src = base64;
+            fotoAtualBase64 = await processarFoto(arquivo);
+            document.getElementById('imgPreview').src = fotoAtualBase64;
             document.getElementById('previewFoto').style.display = 'block';
-            btnRemover.style.display = 'inline-block';
-        } catch (err) {
-            alert('Não foi possível carregar a foto. Tente outra imagem.');
+            document.getElementById('removerFoto').style.display = 'inline-block';
+        } catch {
+            alert('Não foi possível carregar a foto.');
             limparFoto();
         }
     });
 
-    btnRemover.addEventListener('click', limparFoto);
-
-    // Quando muda a categoria: emojis + preenche o título
+    document.getElementById('removerFoto').addEventListener('click', limparFoto);
     document.getElementById('categoria').addEventListener('change', atualizarSugestoesPorCategoria);
 });
