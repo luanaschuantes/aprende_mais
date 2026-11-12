@@ -429,6 +429,41 @@ header {
     margin-top: 8px;
 }
 
+/* Sugestões de emoji */
+.sugestoes-emoji {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+    min-height: 42px;
+    align-items: center;
+}
+
+.sugestoes-emoji .dica-sugestao {
+    font-size: 0.85rem;
+    color: var(--texto-claro);
+}
+
+.btn-emoji {
+    background: #fff5f7;
+    border: 2px solid #f0d4dc;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.btn-emoji:hover {
+    background: linear-gradient(135deg, #e8a0b0, #c3aed6);
+    border-color: transparent;
+    transform: scale(1.12);
+}
+
 .btn-salvar {
     width: 100%;
     background: linear-gradient(135deg, #e8a0b0, #c3aed6);

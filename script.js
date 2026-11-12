@@ -2,7 +2,15 @@
 
 const CHAVE_STORAGE = 'meuArquivoDeMemoria';
 
-// Memórias de exemplo (só aparecem se o arquivo estiver vazio)
+// Sugestões de emoji por categoria
+const emojisPorCategoria = {
+    familia: ['👨‍👩‍👧‍👦', '🏠', '❤️', '👩‍👩‍👧', '👨‍👨‍👦', '👶', '👵', '👴', '🥰', '💕'],
+    amigos: ['🤝', '👯', '🎉', '😊', '🤗', '💕', '🍻', '👥', '✨', '😘'],
+    pets: ['🐶', '🐱', '🐾', '🐰', '🐔', '🐠', '🐹', '🐈', '🐕', '❤️'],
+    outros: ['✨', '🌟', '🎈', '☀️', '🌈', '💖', '🌺', '🎂', '💫', '🌞']
+};
+
+// Memórias de exemplo
 const memoriasIniciais = [
     {
         id: 1,
@@ -35,9 +43,8 @@ const memoriasIniciais = [
 
 let memorias = [];
 let filtroAtual = 'todos';
-let fotoAtualBase64 = null; // guarda a foto selecionada temporariamente
+let fotoAtualBase64 = null;
 
-// Carrega do localStorage ou usa as iniciais
 function carregarMemorias() {
     const salvas = localStorage.getItem(CHAVE_STORAGE);
     if (salvas) {
@@ -82,7 +89,6 @@ function renderizarMemorias() {
         filtradas = memorias.filter(m => m.categoria === filtroAtual);
     }
 
-    // Ordena por data (mais recente primeiro)
     filtradas = [...filtradas].sort((a, b) => (b.data || '').localeCompare(a.data || ''));
 
     if (filtradas.length === 0) {
@@ -119,7 +125,6 @@ function apagarMemoria(id) {
     renderizarMemorias();
 }
 
-// Converte arquivo de imagem para Base64 (e redimensiona se for grande)
 function processarFoto(arquivo) {
     return new Promise((resolve, reject) => {
         if (!arquivo || !arquivo.type.startsWith('image/')) {
@@ -127,17 +132,11 @@ function processarFoto(arquivo) {
             return;
         }
 
-        // Limite de ~1.2 MB para não estourar o localStorage
-        if (arquivo.size > 1.5 * 1024 * 1024) {
-            // Vamos redimensionar
-        }
-
         const reader = new FileReader();
         reader.onload = function(e) {
             const img = new Image();
             img.onload = function() {
-                // Redimensiona se a imagem for muito grande
-                const MAX = 900; // largura máxima
+                const MAX = 900;
                 let width = img.width;
                 let height = img.height;
 
@@ -152,7 +151,6 @@ function processarFoto(arquivo) {
                 const ctx = canvas.getContext('2d');
                 ctx.drawImage(img, 0, 0, width, height);
 
-                // Qualidade 0.75 para economizar espaço
                 const base64 = canvas.toDataURL('image/jpeg', 0.75);
                 resolve(base64);
             };
@@ -170,6 +168,29 @@ function limparFoto() {
     document.getElementById('previewFoto').style.display = 'none';
     document.getElementById('imgPreview').src = '';
     document.getElementById('removerFoto').style.display = 'none';
+}
+
+// Atualiza as sugestões de emoji conforme a categoria
+function atualizarSugestoesEmoji() {
+    const categoria = document.getElementById('categoria').value;
+    const container = document.getElementById('sugestoesEmoji');
+
+    if (!categoria || !emojisPorCategoria[categoria]) {
+        container.innerHTML = '<span class="dica-sugestao">Escolha a categoria para ver sugestões ✨</span>';
+        return;
+    }
+
+    const lista = emojisPorCategoria[categoria];
+    container.innerHTML = lista.map(emoji =>
+        `<button type="button" class="btn-emoji" data-emoji="${emoji}">${emoji}</button>`
+    ).join('');
+
+    // Clique nos botões de emoji
+    container.querySelectorAll('.btn-emoji').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.getElementById('emoji').value = btn.dataset.emoji;
+        });
+    });
 }
 
 async function adicionarMemoria(evento) {
@@ -200,23 +221,18 @@ async function adicionarMemoria(evento) {
     salvarMemorias();
     renderizarMemorias();
 
-    // Limpa o formulário
     document.getElementById('formMemoria').reset();
     limparFoto();
+    atualizarSugestoesEmoji();
 
-    // Feedback fofo
     alert('💖 Momento guardado com carinho no seu arquivo!');
-
-    // Rola até as memórias
     document.getElementById('memorias').scrollIntoView({ behavior: 'smooth' });
 }
 
-// Eventos
 document.addEventListener('DOMContentLoaded', () => {
     carregarMemorias();
     renderizarMemorias();
 
-    // Filtros
     document.querySelectorAll('.filtro').forEach(btn => {
         btn.addEventListener('click', () => {
             document.querySelectorAll('.filtro').forEach(b => b.classList.remove('ativo'));
@@ -226,14 +242,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Formulário
     document.getElementById('formMemoria').addEventListener('submit', adicionarMemoria);
 
-    // Data de hoje como padrão
     const hoje = new Date().toISOString().split('T')[0];
     document.getElementById('data').value = hoje;
 
-    // ===== Foto =====
+    // Foto
     const inputFoto = document.getElementById('foto');
     const btnRemover = document.getElementById('removerFoto');
 
@@ -244,7 +258,6 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const base64 = await processarFoto(arquivo);
             fotoAtualBase64 = base64;
-
             document.getElementById('imgPreview').src = base64;
             document.getElementById('previewFoto').style.display = 'block';
             btnRemover.style.display = 'inline-block';
@@ -255,4 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     btnRemover.addEventListener('click', limparFoto);
+
+    // Sugestões de emoji mudam com a categoria
+    document.getElementById('categoria').addEventListener('change', atualizarSugestoesEmoji);
 });
