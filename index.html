@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aprende Mais — Login</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -17,7 +15,6 @@
                 <h1>Aprende Mais</h1>
                 <p class="tagline">Biologia • Química • Física • Matemática</p>
             </div>
-
             <form id="formLogin">
                 <div class="campo">
                     <label for="email">E-mail</label>
@@ -25,28 +22,14 @@
                 </div>
                 <div class="campo">
                     <label for="senha">Senha</label>
-                    <input type="password" id="senha" placeholder="Sua senha" required autocomplete="current-password">
+                    <input type="password" id="senha" placeholder="Mínimo 4 caracteres" required autocomplete="current-password">
                 </div>
-                <p id="erroLogin" class="erro" style="display:none;">E-mail ou senha incorretos.</p>
+                <p id="erroLogin" class="erro" style="display:none;">Use um e-mail e senha com pelo menos 4 caracteres.</p>
                 <button type="submit" class="btn-primario">Entrar</button>
             </form>
-
-            <p class="dica-login">Demo: use qualquer e-mail e senha com pelo menos 4 caracteres</p>
+            <p class="dica-login">Demo: qualquer e-mail e senha com 4+ caracteres</p>
         </div>
     </div>
     <script src="script.js"></script>
-    <script>
-        document.getElementById('formLogin').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = document.getElementById('email').value.trim();
-            const senha = document.getElementById('senha').value;
-            if (email && senha.length >= 4) {
-                localStorage.setItem('aprendeMaisUser', JSON.stringify({ email: email, logado: true }));
-                window.location.href = 'aulas.html';
-            } else {
-                document.getElementById('erroLogin').style.display = 'block';
-            }
-        });
-    </script>
 </body>
 </html>
