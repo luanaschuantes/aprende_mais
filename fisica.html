@@ -21,96 +21,98 @@
         <header class="page-header">
             <a href="aulas.html" class="voltar">← Voltar às matérias</a>
             <h1>⚡ Física</h1>
-            <p>Leia a aula e depois faça o quiz</p>
+            <p>Leia e responda os exercícios abaixo</p>
         </header>
 
-        <div class="lista-aulas" id="listaAulas">
-            <article class="card-aula" data-aula="0">
-                <div class="num laranja">1</div>
-                <div class="info">
-                    <h3>Movimento e velocidade</h3>
-                    <p>MRU e velocidade média</p>
-                    <span class="tag">Aula + Quiz</span>
-                </div>
-                <button class="btn-abrir">Abrir</button>
-            </article>
-            <article class="card-aula" data-aula="1">
-                <div class="num laranja">2</div>
-                <div class="info">
-                    <h3>Leis de Newton</h3>
-                    <p>As três leis do movimento</p>
-                    <span class="tag">Aula + Quiz</span>
-                </div>
-                <button class="btn-abrir">Abrir</button>
-            </article>
-            <article class="card-aula" data-aula="2">
-                <div class="num laranja">3</div>
-                <div class="info">
-                    <h3>Energia</h3>
-                    <p>Cinética, potencial e conservação</p>
-                    <span class="tag">Aula + Quiz</span>
-                </div>
-                <button class="btn-abrir">Abrir</button>
-            </article>
-        </div>
-
-        <div id="areaAula" class="area-aula" style="display:none;">
-            <button class="btn-voltar-lista" id="btnVoltarLista">← Voltar à lista</button>
-            <div class="conteudo-aula" id="conteudoAula"></div>
-            <div class="quiz-box" id="quizBox">
-                <h2>🎮 Quiz</h2>
-                <div id="quizPergunta"></div>
-                <div id="quizOpcoes" class="quiz-opcoes"></div>
-                <div id="quizFeedback" class="quiz-feedback" style="display:none;"></div>
-                <div id="quizRodape" class="quiz-rodape">
-                    <span id="quizProgresso"></span>
-                    <button id="btnProxima" class="btn-primario" style="display:none;">Próxima</button>
-                    <button id="btnVerResultado" class="btn-primario" style="display:none;">Ver resultado</button>
-                </div>
-                <div id="quizResultado" class="quiz-resultado" style="display:none;"></div>
+        <section class="bloco-aula">
+            <h2>1. Movimento e velocidade</h2>
+            <div class="texto-aula">
+                <p><strong>Velocidade média</strong> = distância ÷ tempo (v = Δs/Δt). Unidade no SI: <strong>m/s</strong>. No <strong>MRU</strong> a velocidade é constante.</p>
             </div>
-        </div>
+            <form class="form-exercicio" data-respostas="1,2,1">
+                <fieldset>
+                    <legend>1) Velocidade média é:</legend>
+                    <label><input type="radio" name="f1q1" value="0"> Tempo ÷ distância</label>
+                    <label><input type="radio" name="f1q1" value="1"> Distância ÷ tempo</label>
+                    <label><input type="radio" name="f1q1" value="2"> Força × massa</label>
+                </fieldset>
+                <fieldset>
+                    <legend>2) No MRU a velocidade é:</legend>
+                    <label><input type="radio" name="f1q2" value="0"> Zero</label>
+                    <label><input type="radio" name="f1q2" value="1"> Sempre aumentando</label>
+                    <label><input type="radio" name="f1q2" value="2"> Constante</label>
+                </fieldset>
+                <fieldset>
+                    <legend>3) Unidade de velocidade no SI:</legend>
+                    <label><input type="radio" name="f1q3" value="0"> km/h</label>
+                    <label><input type="radio" name="f1q3" value="1"> m/s</label>
+                    <label><input type="radio" name="f1q3" value="2"> Newton</label>
+                </fieldset>
+                <button type="button" class="btn-primario btn-corrigir">Corrigir</button>
+                <p class="resultado-form"></p>
+            </form>
+        </section>
+
+        <section class="bloco-aula">
+            <h2>2. Leis de Newton</h2>
+            <div class="texto-aula">
+                <p><strong>1ª lei</strong>: inércia. <strong>2ª lei</strong>: F = m × a. <strong>3ª lei</strong>: ação e reação.</p>
+            </div>
+            <form class="form-exercicio" data-respostas="1,1,1">
+                <fieldset>
+                    <legend>1) F = m × a é a:</legend>
+                    <label><input type="radio" name="f2q1" value="0"> 1ª lei</label>
+                    <label><input type="radio" name="f2q1" value="1"> 2ª lei</label>
+                    <label><input type="radio" name="f2q1" value="2"> 3ª lei</label>
+                </fieldset>
+                <fieldset>
+                    <legend>2) A 3ª lei fala de:</legend>
+                    <label><input type="radio" name="f2q2" value="0"> Inércia</label>
+                    <label><input type="radio" name="f2q2" value="1"> Ação e reação</label>
+                    <label><input type="radio" name="f2q2" value="2"> Energia</label>
+                </fieldset>
+                <fieldset>
+                    <legend>3) Inércia é a tendência de:</legend>
+                    <label><input type="radio" name="f2q3" value="0"> Parar sempre</label>
+                    <label><input type="radio" name="f2q3" value="1"> Manter repouso ou movimento</label>
+                    <label><input type="radio" name="f2q3" value="2"> Acelerar sozinho</label>
+                </fieldset>
+                <button type="button" class="btn-primario btn-corrigir">Corrigir</button>
+                <p class="resultado-form"></p>
+            </form>
+        </section>
+
+        <section class="bloco-aula">
+            <h2>3. Energia</h2>
+            <div class="texto-aula">
+                <p><strong>Cinética</strong>: energia do movimento. <strong>Potencial gravitacional</strong>: Ep = m g h. Sem atrito, a energia mecânica se <strong>conserva</strong>.</p>
+            </div>
+            <form class="form-exercicio" data-respostas="1,2,2">
+                <fieldset>
+                    <legend>1) Energia do movimento:</legend>
+                    <label><input type="radio" name="f3q1" value="0"> Potencial</label>
+                    <label><input type="radio" name="f3q1" value="1"> Cinética</label>
+                    <label><input type="radio" name="f3q1" value="2"> Térmica</label>
+                </fieldset>
+                <fieldset>
+                    <legend>2) Ep = m g h é energia:</legend>
+                    <label><input type="radio" name="f3q2" value="0"> Cinética</label>
+                    <label><input type="radio" name="f3q2" value="1"> Elétrica</label>
+                    <label><input type="radio" name="f3q2" value="2"> Potencial gravitacional</label>
+                </fieldset>
+                <fieldset>
+                    <legend>3) Sem atrito, a energia mecânica:</legend>
+                    <label><input type="radio" name="f3q3" value="0"> Some</label>
+                    <label><input type="radio" name="f3q3" value="1"> Aumenta sempre</label>
+                    <label><input type="radio" name="f3q3" value="2"> Se conserva</label>
+                </fieldset>
+                <button type="button" class="btn-primario btn-corrigir">Corrigir</button>
+                <p class="resultado-form"></p>
+            </form>
+        </section>
     </main>
 
     <footer class="footer"><p>📚 Aprende Mais &mdash; Física</p></footer>
     <script src="script.js"></script>
-    <script>
-        const AULAS = [
-            {
-                titulo: "Movimento e velocidade",
-                texto: `<p><strong>Velocidade média</strong> = distância ÷ tempo. Unidade no SI: m/s.</p>
-                <p>No <strong>MRU</strong> (movimento retilíneo uniforme) a velocidade é constante.</p>
-                <p>Fórmula: <strong>v = Δs / Δt</strong>.</p>`,
-                perguntas: [
-                    { q: "Velocidade média é:", opcoes: ["Tempo ÷ distância", "Distância ÷ tempo", "Força × massa", "Massa ÷ volume"], correta: 1 },
-                    { q: "No MRU a velocidade é:", opcoes: ["Zero", "Sempre aumentando", "Constante", "Negativa"], correta: 2 },
-                    { q: "Unidade de velocidade no SI:", opcoes: ["km/h", "m/s", "N", "J"], correta: 1 }
-                ]
-            },
-            {
-                titulo: "Leis de Newton",
-                texto: `<p><strong>1ª lei</strong> (inércia): um corpo tende a manter seu estado de repouso ou movimento uniforme.</p>
-                <p><strong>2ª lei</strong>: F = m × a (força = massa × aceleração).</p>
-                <p><strong>3ª lei</strong>: ação e reação — forças iguais e opostas.</p>`,
-                perguntas: [
-                    { q: "F = m × a é a:", opcoes: ["1ª lei", "2ª lei", "3ª lei", "Lei da gravidade"], correta: 1 },
-                    { q: "A 3ª lei fala de:", opcoes: ["Inércia", "Ação e reação", "Energia", "Velocidade"], correta: 1 },
-                    { q: "Inércia é a tendência de:", opcoes: ["Parar sempre", "Manter o estado de movimento ou repouso", "Acelerar sozinho", "Flutuar"], correta: 1 }
-                ]
-            },
-            {
-                titulo: "Energia",
-                texto: `<p><strong>Energia cinética</strong>: energia do movimento (Ec = ½ m v²).</p>
-                <p><strong>Energia potencial gravitacional</strong>: Ep = m g h.</p>
-                <p>A energia mecânica total se conserva na ausência de atrito.</p>`,
-                perguntas: [
-                    { q: "Energia do movimento se chama:", opcoes: ["Potencial", "Cinética", "Térmica", "Química"], correta: 1 },
-                    { q: "Ep = m g h é energia:", opcoes: ["Cinética", "Elétrica", "Potencial gravitacional", "Sonora"], correta: 2 },
-                    { q: "Sem atrito, a energia mecânica:", opcoes: ["Some", "Aumenta sempre", "Se conserva", "Vira só calor"], correta: 2 }
-                ]
-            }
-        ];
-        iniciarMateria(AULAS, 'laranja');
-    </script>
 </body>
 </html>

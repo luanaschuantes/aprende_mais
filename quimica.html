@@ -21,96 +21,98 @@
         <header class="page-header">
             <a href="aulas.html" class="voltar">← Voltar às matérias</a>
             <h1>⚗️ Química</h1>
-            <p>Leia a aula e depois faça o quiz</p>
+            <p>Leia e responda os exercícios abaixo</p>
         </header>
 
-        <div class="lista-aulas" id="listaAulas">
-            <article class="card-aula" data-aula="0">
-                <div class="num roxo">1</div>
-                <div class="info">
-                    <h3>Estrutura do átomo</h3>
-                    <p>Prótons, nêutrons e elétrons</p>
-                    <span class="tag">Aula + Quiz</span>
-                </div>
-                <button class="btn-abrir">Abrir</button>
-            </article>
-            <article class="card-aula" data-aula="1">
-                <div class="num roxo">2</div>
-                <div class="info">
-                    <h3>Tabela periódica</h3>
-                    <p>Organização dos elementos</p>
-                    <span class="tag">Aula + Quiz</span>
-                </div>
-                <button class="btn-abrir">Abrir</button>
-            </article>
-            <article class="card-aula" data-aula="2">
-                <div class="num roxo">3</div>
-                <div class="info">
-                    <h3>Ligações químicas</h3>
-                    <p>Iônica, covalente e metálica</p>
-                    <span class="tag">Aula + Quiz</span>
-                </div>
-                <button class="btn-abrir">Abrir</button>
-            </article>
-        </div>
-
-        <div id="areaAula" class="area-aula" style="display:none;">
-            <button class="btn-voltar-lista" id="btnVoltarLista">← Voltar à lista</button>
-            <div class="conteudo-aula" id="conteudoAula"></div>
-            <div class="quiz-box" id="quizBox">
-                <h2>🎮 Quiz</h2>
-                <div id="quizPergunta"></div>
-                <div id="quizOpcoes" class="quiz-opcoes"></div>
-                <div id="quizFeedback" class="quiz-feedback" style="display:none;"></div>
-                <div id="quizRodape" class="quiz-rodape">
-                    <span id="quizProgresso"></span>
-                    <button id="btnProxima" class="btn-primario" style="display:none;">Próxima</button>
-                    <button id="btnVerResultado" class="btn-primario" style="display:none;">Ver resultado</button>
-                </div>
-                <div id="quizResultado" class="quiz-resultado" style="display:none;"></div>
+        <section class="bloco-aula">
+            <h2>1. Estrutura do átomo</h2>
+            <div class="texto-aula">
+                <p>O átomo tem <strong>núcleo</strong> (prótons + e nêutrons) e <strong>eletrosfera</strong> (elétrons). Próton = carga +; elétron = carga −. O número de prótons é o <strong>número atômico</strong>.</p>
             </div>
-        </div>
+            <form class="form-exercicio" data-respostas="2,1,1">
+                <fieldset>
+                    <legend>1) O que tem carga positiva?</legend>
+                    <label><input type="radio" name="q1q1" value="0"> Elétron</label>
+                    <label><input type="radio" name="q1q1" value="1"> Nêutron</label>
+                    <label><input type="radio" name="q1q1" value="2"> Próton</label>
+                </fieldset>
+                <fieldset>
+                    <legend>2) Número atômico é o número de:</legend>
+                    <label><input type="radio" name="q1q2" value="0"> Nêutrons</label>
+                    <label><input type="radio" name="q1q2" value="1"> Prótons</label>
+                    <label><input type="radio" name="q1q2" value="2"> Moléculas</label>
+                </fieldset>
+                <fieldset>
+                    <legend>3) Onde ficam os elétrons?</legend>
+                    <label><input type="radio" name="q1q3" value="0"> No núcleo</label>
+                    <label><input type="radio" name="q1q3" value="1"> Na eletrosfera</label>
+                    <label><input type="radio" name="q1q3" value="2"> Fora do átomo</label>
+                </fieldset>
+                <button type="button" class="btn-primario btn-corrigir">Corrigir</button>
+                <p class="resultado-form"></p>
+            </form>
+        </section>
+
+        <section class="bloco-aula">
+            <h2>2. Tabela periódica</h2>
+            <div class="texto-aula">
+                <p>A tabela organiza os elementos por <strong>número atômico</strong>. <strong>Períodos</strong> = linhas. <strong>Grupos</strong> = colunas. Elementos do mesmo grupo têm propriedades parecidas.</p>
+            </div>
+            <form class="form-exercicio" data-respostas="1,1,1">
+                <fieldset>
+                    <legend>1) As linhas da tabela são:</legend>
+                    <label><input type="radio" name="q2q1" value="0"> Grupos</label>
+                    <label><input type="radio" name="q2q1" value="1"> Períodos</label>
+                    <label><input type="radio" name="q2q1" value="2"> Famílias</label>
+                </fieldset>
+                <fieldset>
+                    <legend>2) Elementos do mesmo grupo têm:</legend>
+                    <label><input type="radio" name="q2q2" value="0"> Mesma massa</label>
+                    <label><input type="radio" name="q2q2" value="1"> Propriedades parecidas</label>
+                    <label><input type="radio" name="q2q2" value="2"> Mesma cor</label>
+                </fieldset>
+                <fieldset>
+                    <legend>3) A tabela é organizada por:</legend>
+                    <label><input type="radio" name="q2q3" value="0"> Ordem alfabética</label>
+                    <label><input type="radio" name="q2q3" value="1"> Número atômico</label>
+                    <label><input type="radio" name="q2q3" value="2"> Densidade</label>
+                </fieldset>
+                <button type="button" class="btn-primario btn-corrigir">Corrigir</button>
+                <p class="resultado-form"></p>
+            </form>
+        </section>
+
+        <section class="bloco-aula">
+            <h2>3. Ligações químicas</h2>
+            <div class="texto-aula">
+                <p><strong>Iônica</strong>: transferência de elétrons (ex.: NaCl). <strong>Covalente</strong>: compartilhamento (ex.: H₂O). <strong>Metálica</strong>: entre metais.</p>
+            </div>
+            <form class="form-exercicio" data-respostas="1,2,1">
+                <fieldset>
+                    <legend>1) NaCl é ligação:</legend>
+                    <label><input type="radio" name="q3q1" value="0"> Covalente</label>
+                    <label><input type="radio" name="q3q1" value="1"> Iônica</label>
+                    <label><input type="radio" name="q3q1" value="2"> Metálica</label>
+                </fieldset>
+                <fieldset>
+                    <legend>2) Água (H₂O) tem ligação:</legend>
+                    <label><input type="radio" name="q3q2" value="0"> Iônica</label>
+                    <label><input type="radio" name="q3q2" value="1"> Metálica</label>
+                    <label><input type="radio" name="q3q2" value="2"> Covalente</label>
+                </fieldset>
+                <fieldset>
+                    <legend>3) Ligação metálica ocorre entre:</legend>
+                    <label><input type="radio" name="q3q3" value="0"> Não metais</label>
+                    <label><input type="radio" name="q3q3" value="1"> Metais</label>
+                    <label><input type="radio" name="q3q3" value="2"> Gases</label>
+                </fieldset>
+                <button type="button" class="btn-primario btn-corrigir">Corrigir</button>
+                <p class="resultado-form"></p>
+            </form>
+        </section>
     </main>
 
     <footer class="footer"><p>📚 Aprende Mais &mdash; Química</p></footer>
     <script src="script.js"></script>
-    <script>
-        const AULAS = [
-            {
-                titulo: "Estrutura do átomo",
-                texto: `<p>O <strong>átomo</strong> é formado por núcleo (prótons e nêutrons) e eletrosfera (elétrons).</p>
-                <p><strong>Próton</strong>: carga positiva. <strong>Nêutron</strong>: sem carga. <strong>Elétron</strong>: carga negativa.</p>
-                <p>O número de prótons define o elemento químico (número atômico).</p>`,
-                perguntas: [
-                    { q: "O que tem carga positiva no átomo?", opcoes: ["Elétron", "Nêutron", "Próton", "Núcleo inteiro"], correta: 2 },
-                    { q: "O número atômico é igual ao número de:", opcoes: ["Nêutrons", "Prótons", "Elétrons + nêutrons", "Moléculas"], correta: 1 },
-                    { q: "Onde ficam os elétrons?", opcoes: ["No núcleo", "Na eletrosfera", "Só nos prótons", "Fora do átomo"], correta: 1 }
-                ]
-            },
-            {
-                titulo: "Tabela periódica",
-                texto: `<p>A <strong>tabela periódica</strong> organiza os elementos por número atômico crescente.</p>
-                <p><strong>Períodos</strong> são as linhas horizontais. <strong>Grupos</strong> (ou famílias) são as colunas verticais.</p>
-                <p>Elementos do mesmo grupo têm propriedades químicas parecidas.</p>`,
-                perguntas: [
-                    { q: "As linhas da tabela periódica são chamadas de:", opcoes: ["Grupos", "Períodos", "Famílias", "Blocos"], correta: 1 },
-                    { q: "Elementos do mesmo grupo têm:", opcoes: ["Mesmo número de nêutrons", "Propriedades parecidas", "Mesma cor", "Mesma massa"], correta: 1 },
-                    { q: "A tabela é organizada por:", opcoes: ["Ordem alfabética", "Número atômico", "Cor", "Densidade"], correta: 1 }
-                ]
-            },
-            {
-                titulo: "Ligações químicas",
-                texto: `<p><strong>Ligação iônica</strong>: transferência de elétrons (metal + não metal), ex.: NaCl.</p>
-                <p><strong>Ligação covalente</strong>: compartilhamento de elétrons (não metais), ex.: H₂O.</p>
-                <p><strong>Ligação metálica</strong>: elétrons livres entre átomos de metal.</p>`,
-                perguntas: [
-                    { q: "NaCl é exemplo de ligação:", opcoes: ["Covalente", "Iônica", "Metálica", "De hidrogênio"], correta: 1 },
-                    { q: "Água (H₂O) tem ligação:", opcoes: ["Iônica", "Metálica", "Covalente", "Nenhuma"], correta: 2 },
-                    { q: "Ligação metálica ocorre entre:", opcoes: ["Não metais", "Metais", "Gases", "Água e sal"], correta: 1 }
-                ]
-            }
-        ];
-        iniciarMateria(AULAS, 'roxo');
-    </script>
 </body>
 </html>

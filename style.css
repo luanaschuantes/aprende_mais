@@ -65,22 +65,10 @@ body {
     font-weight: 700;
     font-size: 1rem;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
 }
-.btn-primario:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(59,130,246,0.35); }
+.btn-primario:hover { opacity: 0.92; }
 .login-card .btn-primario { width: 100%; padding: 14px; margin-top: 8px; }
 .dica-login { text-align: center; font-size: 0.8rem; color: var(--texto-claro); margin-top: 18px; }
-.btn-secundario {
-    background: white;
-    color: var(--azul-escuro);
-    border: 2px solid #e2e8f0;
-    padding: 10px 18px;
-    border-radius: 12px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 700;
-    cursor: pointer;
-    margin-left: 8px;
-}
 
 /* Nav */
 .navbar {
@@ -105,7 +93,7 @@ body {
 }
 .nav-links a:hover, .nav-links a.ativo { background: #eff6ff; color: var(--azul-escuro); }
 
-.container { max-width: 800px; margin: 0 auto; padding: 32px 20px 60px; }
+.container { max-width: 720px; margin: 0 auto; padding: 32px 20px 60px; }
 .page-header { margin-bottom: 28px; }
 .page-header h1 { font-size: 1.9rem; color: var(--azul-escuro); margin-bottom: 6px; }
 .page-header p { color: var(--texto-claro); }
@@ -115,10 +103,9 @@ body {
     text-decoration: none;
     font-weight: 600;
     margin-bottom: 12px;
-    font-size: 0.95rem;
 }
 
-/* Matérias na home */
+/* Matérias */
 .grade-materias {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -132,9 +119,8 @@ body {
     color: inherit;
     box-shadow: var(--sombra);
     border-top: 5px solid transparent;
-    transition: transform 0.25s;
 }
-.card-materia:hover { transform: translateY(-5px); }
+.card-materia:hover { transform: translateY(-4px); transition: transform 0.2s; }
 .card-materia .icone { font-size: 2.4rem; margin-bottom: 10px; }
 .card-materia h2 { font-size: 1.2rem; margin-bottom: 6px; }
 .card-materia p { font-size: 0.88rem; color: var(--texto-claro); margin-bottom: 12px; }
@@ -151,154 +137,67 @@ body {
 .card-materia.fisica { border-top-color: var(--laranja); }
 .card-materia.matematica { border-top-color: var(--azul); }
 
-/* Lista de aulas */
-.lista-aulas { display: flex; flex-direction: column; gap: 12px; }
-.card-aula {
+/* Blocos de aula + formulário */
+.bloco-aula {
     background: var(--branco);
     border-radius: var(--raio);
-    padding: 18px 20px;
-    box-shadow: var(--sombra);
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-.card-aula .num {
-    width: 42px;
-    height: 42px;
-    min-width: 42px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-    color: white;
-    font-size: 1.1rem;
-}
-.num.verde { background: linear-gradient(135deg, #10b981, #047857); }
-.num.roxo { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
-.num.laranja { background: linear-gradient(135deg, #f59e0b, #b45309); }
-.num.azul { background: linear-gradient(135deg, #3b82f6, #1e40af); }
-.card-aula .info { flex: 1; }
-.card-aula .info h3 { font-size: 1.05rem; margin-bottom: 2px; }
-.card-aula .info p { font-size: 0.88rem; color: var(--texto-claro); margin-bottom: 6px; }
-.card-aula .tag {
-    font-size: 0.75rem;
-    font-weight: 700;
-    padding: 3px 9px;
-    border-radius: 20px;
-    background: #f1f5f9;
-    color: var(--texto-claro);
-}
-.btn-abrir {
-    background: #eff6ff;
-    color: var(--azul-escuro);
-    border: none;
-    padding: 10px 16px;
-    border-radius: 10px;
-    font-weight: 700;
-    font-family: 'Nunito', sans-serif;
-    cursor: pointer;
-}
-.btn-abrir:hover { background: var(--azul); color: white; }
-
-/* Área da aula */
-.area-aula { animation: fade 0.3s ease; }
-@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
-.btn-voltar-lista {
-    background: none;
-    border: none;
-    color: var(--azul);
-    font-weight: 700;
-    font-family: 'Nunito', sans-serif;
-    cursor: pointer;
-    margin-bottom: 16px;
-    font-size: 0.95rem;
-}
-.conteudo-aula {
-    background: var(--branco);
-    border-radius: var(--raio);
-    padding: 28px;
+    padding: 28px 24px;
     box-shadow: var(--sombra);
     margin-bottom: 24px;
 }
-.conteudo-aula h2 { color: var(--azul-escuro); margin-bottom: 14px; }
-.conteudo-aula p { margin-bottom: 12px; }
-
-/* Quiz */
-.quiz-box {
-    background: var(--branco);
-    border-radius: var(--raio);
-    padding: 28px;
-    box-shadow: var(--sombra);
-    border: 2px solid #e2e8f0;
+.bloco-aula h2 {
+    color: var(--azul-escuro);
+    margin-bottom: 12px;
+    font-size: 1.25rem;
 }
-.quiz-box h2 { margin-bottom: 18px; color: var(--azul-escuro); }
-.pergunta-texto {
-    font-size: 1.15rem;
-    font-weight: 700;
-    margin-bottom: 16px;
-}
-.quiz-opcoes { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
-.opcao-quiz {
-    width: 100%;
-    text-align: left;
-    padding: 14px 18px;
-    border: 2px solid #e2e8f0;
-    border-radius: 12px;
+.texto-aula {
     background: #f8fafc;
-    font-family: 'Nunito', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
+    border-left: 4px solid var(--azul);
+    padding: 14px 16px;
+    border-radius: 0 10px 10px 0;
+    margin-bottom: 20px;
 }
-.opcao-quiz:hover:not(:disabled) {
+.texto-aula p { margin: 0; }
+
+.form-exercicio fieldset {
+    border: none;
+    margin-bottom: 18px;
+}
+.form-exercicio legend {
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: block;
+    width: 100%;
+}
+.form-exercicio label {
+    display: block;
+    padding: 10px 14px;
+    margin-bottom: 6px;
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+.form-exercicio label:hover {
     border-color: var(--azul);
     background: #eff6ff;
 }
-.opcao-quiz.correta {
-    border-color: var(--verde);
-    background: #ecfdf5;
-    color: #047857;
+.form-exercicio input[type="radio"] {
+    margin-right: 10px;
 }
-.opcao-quiz.errada {
-    border-color: var(--vermelho);
-    background: #fef2f2;
-    color: #b91c1c;
+.form-exercicio .btn-corrigir {
+    margin-top: 8px;
 }
-.opcao-quiz:disabled { cursor: default; }
-.quiz-feedback {
-    padding: 12px 16px;
-    border-radius: 10px;
+.resultado-form {
+    margin-top: 14px;
     font-weight: 700;
-    margin-bottom: 14px;
+    padding: 12px 14px;
+    border-radius: 10px;
 }
-.quiz-feedback.ok { background: #ecfdf5; color: #047857; }
-.quiz-feedback.erro { background: #fef2f2; color: #b91c1c; }
-.quiz-rodape {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-#quizProgresso { color: var(--texto-claro); font-weight: 600; font-size: 0.9rem; }
-.quiz-resultado {
-    background: var(--branco);
-    border-radius: var(--raio);
-    padding: 32px;
-    box-shadow: var(--sombra);
-    text-align: center;
-}
-.quiz-resultado h2 { margin-bottom: 12px; }
-.quiz-resultado .score {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--azul-escuro);
-    margin-bottom: 10px;
-}
-.quiz-resultado .btn-primario,
-.quiz-resultado .btn-secundario { margin-top: 16px; }
+.resultado-form.ok { background: #ecfdf5; color: #047857; }
+.resultado-form.erro { background: #fef2f2; color: #b91c1c; }
+.resultado-form.aviso { background: #fffbeb; color: #b45309; }
 
 .footer {
     text-align: center;
@@ -311,6 +210,4 @@ body {
 
 @media (max-width: 600px) {
     .navbar { flex-direction: column; gap: 10px; }
-    .card-aula { flex-wrap: wrap; }
-    .btn-abrir { width: 100%; }
 }

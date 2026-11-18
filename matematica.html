@@ -21,96 +21,98 @@
         <header class="page-header">
             <a href="aulas.html" class="voltar">← Voltar às matérias</a>
             <h1>📐 Matemática</h1>
-            <p>Leia a aula e depois faça o quiz</p>
+            <p>Leia e responda os exercícios abaixo</p>
         </header>
 
-        <div class="lista-aulas" id="listaAulas">
-            <article class="card-aula" data-aula="0">
-                <div class="num azul">1</div>
-                <div class="info">
-                    <h3>Equações do 1º grau</h3>
-                    <p>Como resolver equações simples</p>
-                    <span class="tag">Aula + Quiz</span>
-                </div>
-                <button class="btn-abrir">Abrir</button>
-            </article>
-            <article class="card-aula" data-aula="1">
-                <div class="num azul">2</div>
-                <div class="info">
-                    <h3>Áreas e perímetros</h3>
-                    <p>Retângulo, triângulo e círculo</p>
-                    <span class="tag">Aula + Quiz</span>
-                </div>
-                <button class="btn-abrir">Abrir</button>
-            </article>
-            <article class="card-aula" data-aula="2">
-                <div class="num azul">3</div>
-                <div class="info">
-                    <h3>Porcentagem</h3>
-                    <p>Cálculos do dia a dia</p>
-                    <span class="tag">Aula + Quiz</span>
-                </div>
-                <button class="btn-abrir">Abrir</button>
-            </article>
-        </div>
-
-        <div id="areaAula" class="area-aula" style="display:none;">
-            <button class="btn-voltar-lista" id="btnVoltarLista">← Voltar à lista</button>
-            <div class="conteudo-aula" id="conteudoAula"></div>
-            <div class="quiz-box" id="quizBox">
-                <h2>🎮 Quiz</h2>
-                <div id="quizPergunta"></div>
-                <div id="quizOpcoes" class="quiz-opcoes"></div>
-                <div id="quizFeedback" class="quiz-feedback" style="display:none;"></div>
-                <div id="quizRodape" class="quiz-rodape">
-                    <span id="quizProgresso"></span>
-                    <button id="btnProxima" class="btn-primario" style="display:none;">Próxima</button>
-                    <button id="btnVerResultado" class="btn-primario" style="display:none;">Ver resultado</button>
-                </div>
-                <div id="quizResultado" class="quiz-resultado" style="display:none;"></div>
+        <section class="bloco-aula">
+            <h2>1. Equações do 1º grau</h2>
+            <div class="texto-aula">
+                <p>Forma: <strong>ax + b = c</strong>. Exemplo: 2x + 4 = 10 → 2x = 6 → <strong>x = 3</strong>. Passe os números para o outro lado com a operação inversa.</p>
             </div>
-        </div>
+            <form class="form-exercicio" data-respostas="1,1,1">
+                <fieldset>
+                    <legend>1) Em 2x + 4 = 10, x vale:</legend>
+                    <label><input type="radio" name="m1q1" value="0"> 2</label>
+                    <label><input type="radio" name="m1q1" value="1"> 3</label>
+                    <label><input type="radio" name="m1q1" value="2"> 4</label>
+                </fieldset>
+                <fieldset>
+                    <legend>2) 3x = 12 ⇒ x = ?</legend>
+                    <label><input type="radio" name="m1q2" value="0"> 3</label>
+                    <label><input type="radio" name="m1q2" value="1"> 4</label>
+                    <label><input type="radio" name="m1q2" value="2"> 9</label>
+                </fieldset>
+                <fieldset>
+                    <legend>3) 5x − 5 = 10 ⇒ x = ?</legend>
+                    <label><input type="radio" name="m1q3" value="0"> 2</label>
+                    <label><input type="radio" name="m1q3" value="1"> 3</label>
+                    <label><input type="radio" name="m1q3" value="2"> 5</label>
+                </fieldset>
+                <button type="button" class="btn-primario btn-corrigir">Corrigir</button>
+                <p class="resultado-form"></p>
+            </form>
+        </section>
+
+        <section class="bloco-aula">
+            <h2>2. Áreas</h2>
+            <div class="texto-aula">
+                <p><strong>Retângulo</strong>: área = base × altura. <strong>Triângulo</strong>: (base × altura) / 2. <strong>Círculo</strong>: π r².</p>
+            </div>
+            <form class="form-exercicio" data-respostas="1,1,1">
+                <fieldset>
+                    <legend>1) Área do retângulo 5 × 3:</legend>
+                    <label><input type="radio" name="m2q1" value="0"> 8</label>
+                    <label><input type="radio" name="m2q1" value="1"> 15</label>
+                    <label><input type="radio" name="m2q1" value="2"> 30</label>
+                </fieldset>
+                <fieldset>
+                    <legend>2) Área do triângulo divide por:</legend>
+                    <label><input type="radio" name="m2q2" value="0"> 1</label>
+                    <label><input type="radio" name="m2q2" value="1"> 2</label>
+                    <label><input type="radio" name="m2q2" value="2"> 4</label>
+                </fieldset>
+                <fieldset>
+                    <legend>3) Área do círculo:</legend>
+                    <label><input type="radio" name="m2q3" value="0"> 2 π r</label>
+                    <label><input type="radio" name="m2q3" value="1"> π r²</label>
+                    <label><input type="radio" name="m2q3" value="2"> r²</label>
+                </fieldset>
+                <button type="button" class="btn-primario btn-corrigir">Corrigir</button>
+                <p class="resultado-form"></p>
+            </form>
+        </section>
+
+        <section class="bloco-aula">
+            <h2>3. Porcentagem</h2>
+            <div class="texto-aula">
+                <p>X% de um valor = valor × (X/100). Ex.: <strong>10% de 200 = 20</strong>. 50% = metade. 25% = 0,25.</p>
+            </div>
+            <form class="form-exercicio" data-respostas="1,1,2">
+                <fieldset>
+                    <legend>1) 10% de 200:</legend>
+                    <label><input type="radio" name="m3q1" value="0"> 10</label>
+                    <label><input type="radio" name="m3q1" value="1"> 20</label>
+                    <label><input type="radio" name="m3q1" value="2"> 2</label>
+                </fieldset>
+                <fieldset>
+                    <legend>2) 50% de um número é:</legend>
+                    <label><input type="radio" name="m3q2" value="0"> O dobro</label>
+                    <label><input type="radio" name="m3q2" value="1"> A metade</label>
+                    <label><input type="radio" name="m3q2" value="2"> O triplo</label>
+                </fieldset>
+                <fieldset>
+                    <legend>3) 25% em decimal:</legend>
+                    <label><input type="radio" name="m3q3" value="0"> 25</label>
+                    <label><input type="radio" name="m3q3" value="1"> 2,5</label>
+                    <label><input type="radio" name="m3q3" value="2"> 0,25</label>
+                </fieldset>
+                <button type="button" class="btn-primario btn-corrigir">Corrigir</button>
+                <p class="resultado-form"></p>
+            </form>
+        </section>
     </main>
 
     <footer class="footer"><p>📚 Aprende Mais &mdash; Matemática</p></footer>
     <script src="script.js"></script>
-    <script>
-        const AULAS = [
-            {
-                titulo: "Equações do 1º grau",
-                texto: `<p>Uma equação do 1º grau tem a forma <strong>ax + b = c</strong>.</p>
-                <p>Exemplo: 2x + 4 = 10 → 2x = 6 → <strong>x = 3</strong>.</p>
-                <p>Isole o x passando os números para o outro lado com a operação inversa.</p>`,
-                perguntas: [
-                    { q: "Em 2x + 4 = 10, o valor de x é:", opcoes: ["2", "3", "4", "6"], correta: 1 },
-                    { q: "Para isolar x em ax + b = c, o primeiro passo é:", opcoes: ["Dividir por a", "Passar b para o outro lado", "Multiplicar por b", "Ignorar b"], correta: 1 },
-                    { q: "3x = 12 ⇒ x = ?", opcoes: ["3", "4", "9", "36"], correta: 1 }
-                ]
-            },
-            {
-                titulo: "Áreas e perímetros",
-                texto: `<p><strong>Retângulo</strong>: área = base × altura; perímetro = 2(b + h).</p>
-                <p><strong>Triângulo</strong>: área = (base × altura) / 2.</p>
-                <p><strong>Círculo</strong>: área = π r²; comprimento = 2 π r.</p>`,
-                perguntas: [
-                    { q: "Área do retângulo 5 × 3:", opcoes: ["8", "15", "16", "30"], correta: 1 },
-                    { q: "Área do triângulo é (base × altura) dividido por:", opcoes: ["1", "2", "3", "4"], correta: 1 },
-                    { q: "Área do círculo usa a fórmula:", opcoes: ["2 π r", "π r²", "r²", "π + r"], correta: 1 }
-                ]
-            },
-            {
-                titulo: "Porcentagem",
-                texto: `<p><strong>Porcentagem</strong> é uma fração de 100. Ex.: 25% = 25/100 = 0,25.</p>
-                <p>Para calcular X% de um valor: multiplique o valor por (X/100).</p>
-                <p>Ex.: 10% de 200 = 20.</p>`,
-                perguntas: [
-                    { q: "10% de 200 é:", opcoes: ["10", "20", "2", "200"], correta: 1 },
-                    { q: "50% de um número é o mesmo que:", opcoes: ["O dobro", "A metade", "O triplo", "Zero"], correta: 1 },
-                    { q: "25% em decimal é:", opcoes: ["25", "2,5", "0,25", "0,025"], correta: 2 }
-                ]
-            }
-        ];
-        iniciarMateria(AULAS, 'azul');
-    </script>
 </body>
 </html>

@@ -21,98 +21,101 @@
         <header class="page-header">
             <a href="aulas.html" class="voltar">← Voltar às matérias</a>
             <h1>🧬 Biologia</h1>
-            <p>Leia a aula e depois faça o quiz</p>
+            <p>Leia e responda os exercícios abaixo</p>
         </header>
 
-        <!-- Lista de aulas -->
-        <div class="lista-aulas" id="listaAulas">
-            <article class="card-aula" data-aula="0">
-                <div class="num verde">1</div>
-                <div class="info">
-                    <h3>Células: a unidade da vida</h3>
-                    <p>Estrutura celular e tipos de células</p>
-                    <span class="tag">Aula + Quiz</span>
-                </div>
-                <button class="btn-abrir">Abrir</button>
-            </article>
-            <article class="card-aula" data-aula="1">
-                <div class="num verde">2</div>
-                <div class="info">
-                    <h3>Fotossíntese</h3>
-                    <p>Como as plantas produzem energia</p>
-                    <span class="tag">Aula + Quiz</span>
-                </div>
-                <button class="btn-abrir">Abrir</button>
-            </article>
-            <article class="card-aula" data-aula="2">
-                <div class="num verde">3</div>
-                <div class="info">
-                    <h3>Ecologia básica</h3>
-                    <p>Cadeias alimentares e ecossistemas</p>
-                    <span class="tag">Aula + Quiz</span>
-                </div>
-                <button class="btn-abrir">Abrir</button>
-            </article>
-        </div>
-
-        <!-- Área da aula + quiz (escondida até abrir) -->
-        <div id="areaAula" class="area-aula" style="display:none;">
-            <button class="btn-voltar-lista" id="btnVoltarLista">← Voltar à lista</button>
-            <div class="conteudo-aula" id="conteudoAula"></div>
-            <div class="quiz-box" id="quizBox">
-                <h2>🎮 Quiz</h2>
-                <div id="quizPergunta"></div>
-                <div id="quizOpcoes" class="quiz-opcoes"></div>
-                <div id="quizFeedback" class="quiz-feedback" style="display:none;"></div>
-                <div id="quizRodape" class="quiz-rodape">
-                    <span id="quizProgresso"></span>
-                    <button id="btnProxima" class="btn-primario" style="display:none;">Próxima</button>
-                    <button id="btnVerResultado" class="btn-primario" style="display:none;">Ver resultado</button>
-                </div>
-                <div id="quizResultado" class="quiz-resultado" style="display:none;"></div>
+        <!-- Aula 1 -->
+        <section class="bloco-aula">
+            <h2>1. Células</h2>
+            <div class="texto-aula">
+                <p>A <strong>célula</strong> é a menor unidade viva. <strong>Procariontes</strong> (bactérias) não têm núcleo. <strong>Eucariontes</strong> têm núcleo e organelas. A <strong>mitocôndria</strong> produz energia.</p>
             </div>
-        </div>
+            <form class="form-exercicio" data-respostas="1,0,2">
+                <fieldset>
+                    <legend>1) Qual é a menor unidade viva?</legend>
+                    <label><input type="radio" name="b1q1" value="0"> Átomo</label>
+                    <label><input type="radio" name="b1q1" value="1"> Célula</label>
+                    <label><input type="radio" name="b1q1" value="2"> Tecido</label>
+                </fieldset>
+                <fieldset>
+                    <legend>2) Células sem núcleo são:</legend>
+                    <label><input type="radio" name="b1q2" value="0"> Procariontes</label>
+                    <label><input type="radio" name="b1q2" value="1"> Eucariontes</label>
+                    <label><input type="radio" name="b1q2" value="2"> Animais</label>
+                </fieldset>
+                <fieldset>
+                    <legend>3) Qual organela produz energia?</legend>
+                    <label><input type="radio" name="b1q3" value="0"> Ribossomo</label>
+                    <label><input type="radio" name="b1q3" value="1"> Núcleo</label>
+                    <label><input type="radio" name="b1q3" value="2"> Mitocôndria</label>
+                </fieldset>
+                <button type="button" class="btn-primario btn-corrigir">Corrigir</button>
+                <p class="resultado-form"></p>
+            </form>
+        </section>
+
+        <!-- Aula 2 -->
+        <section class="bloco-aula">
+            <h2>2. Fotossíntese</h2>
+            <div class="texto-aula">
+                <p>Na <strong>fotossíntese</strong>, as plantas usam luz, água e CO₂ para fazer <strong>glicose e oxigênio</strong>. Isso acontece no <strong>cloroplasto</strong>, com a <strong>clorofila</strong>.</p>
+            </div>
+            <form class="form-exercicio" data-respostas="1,2,1">
+                <fieldset>
+                    <legend>1) O que a planta produz na fotossíntese?</legend>
+                    <label><input type="radio" name="b2q1" value="0"> Só água</label>
+                    <label><input type="radio" name="b2q1" value="1"> Glicose e oxigênio</label>
+                    <label><input type="radio" name="b2q1" value="2"> Só CO₂</label>
+                </fieldset>
+                <fieldset>
+                    <legend>2) Onde ocorre a fotossíntese?</legend>
+                    <label><input type="radio" name="b2q2" value="0"> Mitocôndria</label>
+                    <label><input type="radio" name="b2q2" value="1"> Núcleo</label>
+                    <label><input type="radio" name="b2q2" value="2"> Cloroplasto</label>
+                </fieldset>
+                <fieldset>
+                    <legend>3) Qual pigmento é verde?</legend>
+                    <label><input type="radio" name="b2q3" value="0"> Hemoglobina</label>
+                    <label><input type="radio" name="b2q3" value="1"> Clorofila</label>
+                    <label><input type="radio" name="b2q3" value="2"> Melanina</label>
+                </fieldset>
+                <button type="button" class="btn-primario btn-corrigir">Corrigir</button>
+                <p class="resultado-form"></p>
+            </form>
+        </section>
+
+        <!-- Aula 3 -->
+        <section class="bloco-aula">
+            <h2>3. Ecologia</h2>
+            <div class="texto-aula">
+                <p>Na cadeia alimentar: <strong>produtores</strong> (plantas) → <strong>herbívoros</strong> (consumidores primários) → <strong>carnívoros</strong>. <strong>Decompositores</strong> (fungos e bactérias) reciclam a matéria.</p>
+            </div>
+            <form class="form-exercicio" data-respostas="1,0,2">
+                <fieldset>
+                    <legend>1) Quem são os produtores?</legend>
+                    <label><input type="radio" name="b3q1" value="0"> Carnívoros</label>
+                    <label><input type="radio" name="b3q1" value="1"> Plantas</label>
+                    <label><input type="radio" name="b3q1" value="2"> Fungos</label>
+                </fieldset>
+                <fieldset>
+                    <legend>2) Herbívoros são consumidores:</legend>
+                    <label><input type="radio" name="b3q2" value="0"> Primários</label>
+                    <label><input type="radio" name="b3q2" value="1"> Secundários</label>
+                    <label><input type="radio" name="b3q2" value="2"> Decompositores</label>
+                </fieldset>
+                <fieldset>
+                    <legend>3) Quem decompõe a matéria orgânica?</legend>
+                    <label><input type="radio" name="b3q3" value="0"> Só plantas</label>
+                    <label><input type="radio" name="b3q3" value="1"> Só animais</label>
+                    <label><input type="radio" name="b3q3" value="2"> Fungos e bactérias</label>
+                </fieldset>
+                <button type="button" class="btn-primario btn-corrigir">Corrigir</button>
+                <p class="resultado-form"></p>
+            </form>
+        </section>
     </main>
 
     <footer class="footer"><p>📚 Aprende Mais &mdash; Biologia</p></footer>
     <script src="script.js"></script>
-    <script>
-        const AULAS = [
-            {
-                titulo: "Células: a unidade da vida",
-                texto: `<p>A <strong>célula</strong> é a menor unidade viva. Todos os seres vivos são formados por uma ou mais células.</p>
-                <p><strong>Procariontes</strong> (bactérias) não têm núcleo organizado. <strong>Eucariontes</strong> (animais, plantas, fungos) têm núcleo e organelas.</p>
-                <p>Organelas importantes: <em>mitocôndria</em> (energia), <em>ribossomo</em> (proteínas), <em>cloroplasto</em> (fotossíntese nas plantas).</p>`,
-                perguntas: [
-                    { q: "Qual é a menor unidade viva?", opcoes: ["Átomo", "Célula", "Tecido", "Órgão"], correta: 1 },
-                    { q: "Células sem núcleo organizado são chamadas de:", opcoes: ["Eucariontes", "Procariontes", "Animais", "Vegetais"], correta: 1 },
-                    { q: "Qual organela produz energia na célula?", opcoes: ["Ribossomo", "Núcleo", "Mitocôndria", "Vacúolo"], correta: 2 }
-                ]
-            },
-            {
-                titulo: "Fotossíntese",
-                texto: `<p>A <strong>fotossíntese</strong> é o processo pelo qual as plantas produzem seu próprio alimento usando luz solar.</p>
-                <p>Fórmula resumida: <strong>gás carbônico + água + luz → glicose + oxigênio</strong>.</p>
-                <p>Ocorre principalmente nos <em>cloroplastos</em>, que contêm clorofila (pigmento verde).</p>`,
-                perguntas: [
-                    { q: "O que as plantas produzem na fotossíntese?", opcoes: ["Só água", "Glicose e oxigênio", "Só CO₂", "Proteínas"], correta: 1 },
-                    { q: "Onde ocorre a fotossíntese?", opcoes: ["Mitocôndria", "Núcleo", "Cloroplasto", "Ribossomo"], correta: 2 },
-                    { q: "Qual pigmento deixa a planta verde?", opcoes: ["Hemoglobina", "Clorofila", "Melanina", "Caroteno"], correta: 1 }
-                ]
-            },
-            {
-                titulo: "Ecologia básica",
-                texto: `<p><strong>Ecologia</strong> estuda as relações entre os seres vivos e o ambiente.</p>
-                <p>Na <strong>cadeia alimentar</strong>: produtores (plantas) → consumidores primários (herbívoros) → consumidores secundários (carnívoros).</p>
-                <p>Decompositores (fungos e bactérias) reciclagem a matéria orgânica.</p>`,
-                perguntas: [
-                    { q: "Quem são os produtores na cadeia alimentar?", opcoes: ["Carnívoros", "Plantas", "Fungos", "Humanos"], correta: 1 },
-                    { q: "Herbívoros são consumidores:", opcoes: ["Primários", "Secundários", "Terciários", "Decompositores"], correta: 0 },
-                    { q: "Quem decompõe a matéria orgânica?", opcoes: ["Só plantas", "Só animais", "Fungos e bactérias", "Só o sol"], correta: 2 }
-                ]
-            }
-        ];
-        iniciarMateria(AULAS, 'verde');
-    </script>
 </body>
 </html>
