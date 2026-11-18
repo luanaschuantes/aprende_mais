@@ -1,26 +1,22 @@
-# 📜 Meu Arquivo de Memória
+# 📚 Aprende Mais
 
-Um cantinho fofo e acolhedor para guardar os momentos mais especiais da vida: família, amigos, pets e tudo que aquece o coração.
+Site de estudos com **Biologia**, **Química**, **Física** e **Matemática**.
 
-## O que tem neste site?
+## Páginas
 
-- **Álbum de memórias** com cards bonitos e organizados
-- Filtros por categoria: Família, Amigos, Pets e Outros
-- Formulário simples para adicionar novos momentos
-- Tudo salvo automaticamente no navegador (localStorage)
-- Visual suave, pastel e cheio de carinho
+| Arquivo | Conteúdo |
+|---------|----------|
+| `index.html` | Login (e-mail e senha) |
+| `aulas.html` | Menu das 4 matérias |
+| `biologia.html` | Aulas e atividades de Biologia |
+| `quimica.html` | Aulas e atividades de Química |
+| `fisica.html` | Aulas e atividades de Física |
+| `matematica.html` | Aulas e atividades de Matemática |
 
 ## Como usar
 
-1. Abra o `index.html` no navegador (ou publique o repositório no GitHub Pages)
-2. Clique em **"Guardar um momento"** ou role até o formulário
-3. Preencha título, categoria, data e a história
-4. Pronto! A memória aparece no álbum
+1. Abra `index.html` no navegador
+2. Entre com qualquer e-mail e uma senha com 4+ caracteres
+3. Escolha a matéria e veja as atividades
 
-## Estrutura dos arquivos
-
-- `index.html` — página principal
-- `style.css` — visual fofo e responsivo
-- `script.js` — lógica de adicionar, filtrar e salvar memórias
-
-Feito com carinho ✨
+Login é simulado com `localStorage` (sem servidor).

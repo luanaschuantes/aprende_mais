@@ -3,211 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Arquivo de Memória</title>
+    <title>Aprende Mais — Login</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="bg-shapes">
-        <div class="shape shape-1">✨</div>
-        <div class="shape shape-2">🌸</div>
-        <div class="shape shape-3">💖</div>
-        <div class="shape shape-4">🌟</div>
-        <div class="shape shape-5">🐾</div>
+<body class="pagina-login">
+    <div class="login-wrapper">
+        <div class="login-card">
+            <div class="logo">
+                <span class="logo-icon">📚</span>
+                <h1>Aprende Mais</h1>
+                <p class="tagline">Biologia • Química • Física • Matemática</p>
+            </div>
+
+            <form id="formLogin">
+                <div class="campo">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" placeholder="seu@email.com" required autocomplete="username">
+                </div>
+                <div class="campo">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" placeholder="Sua senha" required autocomplete="current-password">
+                </div>
+                <p id="erroLogin" class="erro" style="display:none;">E-mail ou senha incorretos.</p>
+                <button type="submit" class="btn-primario">Entrar</button>
+            </form>
+
+            <p class="dica-login">Demo: use qualquer e-mail e senha com pelo menos 4 caracteres</p>
+        </div>
     </div>
-
-    <!-- Navegação por abas -->
-    <nav>
-        <div class="nav-logo">📜 Meu Arquivo de Memória</div>
-        <div class="nav-tabs">
-            <button class="tab ativo" data-tab="inicio">Início</button>
-            <button class="tab" data-tab="album">Álbum</button>
-            <button class="tab" data-tab="adicionar">Adicionar</button>
-            <button class="tab" data-tab="sobre">Sobre</button>
-        </div>
-    </nav>
-
-    <!-- ========== PÁGINA INÍCIO (apresentação) ========== -->
-    <section id="pagina-inicio" class="pagina ativa">
-        <div class="hero">
-            <div class="hero-conteudo">
-                <p class="hero-badge">Seu cantinho de carinho</p>
-                <h1>Meu Arquivo de Memória</h1>
-                <p class="hero-texto">
-                    Guarde os momentos que fazem o coração aquecer:
-                    família, amigos, pets e tudo que é especial.
-                </p>
-                <div class="hero-botoes">
-                    <button class="btn-principal" data-ir="adicionar">✨ Guardar um momento</button>
-                    <button class="btn-secundario" data-ir="album">Ver meu álbum</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="features">
-            <div class="feature-card">
-                <div class="feature-icon">🏠</div>
-                <h3>Família</h3>
-                <p>Almoços de domingo, abraços e histórias que só a família tem.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🤝</div>
-                <h3>Amigos</h3>
-                <p>Passeios, risadas e aquele sábado no parque que fica na memória.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🐾</div>
-                <h3>Pets</h3>
-                <p>Banhos engraçados, olhinhos e toda a fofura dos seus bichinhos.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📷</div>
-                <h3>Fotos</h3>
-                <p>Adicione fotos direto da galeria e eternize cada momento.</p>
-            </div>
-        </div>
-
-        <div class="como-funciona">
-            <h2>Como funciona</h2>
-            <div class="passos">
-                <div class="passo">
-                    <span class="numero">1</span>
-                    <p>Escolha a categoria (família, amigos, pets...)</p>
-                </div>
-                <div class="passo">
-                    <span class="numero">2</span>
-                    <p>Escreva o título, a história e adicione uma foto</p>
-                </div>
-                <div class="passo">
-                    <span class="numero">3</span>
-                    <p>Pronto! O momento fica guardado no seu álbum</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== PÁGINA ÁLBUM ========== -->
-    <section id="pagina-album" class="pagina">
-        <div class="pagina-header">
-            <h2>Meu Álbum</h2>
-            <p>Todos os momentos especiais em um só lugar</p>
-        </div>
-
-        <div class="filtros">
-            <div class="botoes-filtro">
-                <button class="filtro ativo" data-filtro="todos">Todos</button>
-                <button class="filtro" data-filtro="familia">🏠 Família</button>
-                <button class="filtro" data-filtro="amigos">🤝 Amigos</button>
-                <button class="filtro" data-filtro="pets">🐾 Pets</button>
-                <button class="filtro" data-filtro="outros">✨ Outros</button>
-            </div>
-        </div>
-
-        <div class="container-memorias">
-            <div id="listaMemorias" class="grade-memorias"></div>
-            <div id="vazio" class="estado-vazio" style="display:none;">
-                <div class="emoji-grande">📝</div>
-                <p>Ainda não há memórias por aqui...</p>
-                <p>Que tal guardar o primeiro momento especial?</p>
-                <button class="btn-principal" data-ir="adicionar" style="margin-top:18px">✨ Adicionar agora</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== PÁGINA ADICIONAR ========== -->
-    <section id="pagina-adicionar" class="pagina">
-        <div class="pagina-header">
-            <h2>🎁 Guardar um momento</h2>
-            <p>Preencha os campos e eternize esse carinho</p>
-        </div>
-
-        <div class="secao-adicionar">
-            <div class="card-formulario">
-                <form id="formMemoria">
-                    <div class="campo">
-                        <label for="categoria">Categoria</label>
-                        <select id="categoria" required>
-                            <option value="">Escolha...</option>
-                            <option value="familia">🏠 Família</option>
-                            <option value="amigos">🤝 Amigos</option>
-                            <option value="pets">🐾 Pets</option>
-                            <option value="outros">✨ Outros momentos</option>
-                        </select>
-                    </div>
-
-                    <div class="campo">
-                        <label for="titulo">Título do momento</label>
-                        <input type="text" id="titulo" placeholder="Escolha a categoria para ver um exemplo" required>
-                    </div>
-
-                    <div class="campo">
-                        <label for="data">Data</label>
-                        <input type="date" id="data" required>
-                    </div>
-
-                    <div class="campo">
-                        <label for="descricao">Como foi esse momento?</label>
-                        <textarea id="descricao" rows="4" placeholder="Conte o que aconteceu, o que sentiu, quem estava junto..." required></textarea>
-                    </div>
-
-                    <div class="campo">
-                        <label>Foto do momento</label>
-                        <div class="area-foto">
-                            <label for="foto" class="btn-foto">📷 Escolher foto da galeria</label>
-                            <input type="file" id="foto" accept="image/*" hidden>
-                            <button type="button" id="removerFoto" class="btn-remover-foto" style="display:none;">Remover foto</button>
-                        </div>
-                        <div id="previewFoto" class="preview-foto" style="display:none;">
-                            <img id="imgPreview" src="" alt="Pré-visualização">
-                        </div>
-                        <p class="dica-foto">Dica: fotos menores funcionam melhor</p>
-                    </div>
-
-                    <div class="campo">
-                        <label for="emoji">Emoji que representa</label>
-                        <input type="text" id="emoji" placeholder="Clique em um emoji abaixo ou digite" maxlength="4">
-                        <div id="sugestoesEmoji" class="sugestoes-emoji">
-                            <span class="dica-sugestao">Escolha a categoria para ver sugestões ✨</span>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn-salvar">💖 Guardar no meu arquivo</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== PÁGINA SOBRE ========== -->
-    <section id="pagina-sobre" class="pagina">
-        <div class="pagina-header">
-            <h2>Sobre este cantinho</h2>
-        </div>
-        <div class="card-sobre">
-            <p>
-                O <strong>Meu Arquivo de Memória</strong> foi feito com carinho para ser o lugar onde você guarda
-                os momentos que fazem o coração aquecer: risadas em família, encontros com amigos,
-                bagunças dos pets e todos os pedacinhos especiais da vida.
-            </p>
-            <p>
-                Você pode adicionar fotos direto da galeria do celular ou computador.
-                Tudo fica salvo aqui no seu navegador — é simples, fofo e só seu.
-            </p>
-            <div class="sobre-destaques">
-                <div class="destaque">📸 Fotos da galeria</div>
-                <div class="destaque">📜 Categorias organizadas</div>
-                <div class="destaque">💖 Salvo no navegador</div>
-            </div>
-            <div class="assinatura">Com amor ✨</div>
-        </div>
-    </section>
-
-    <footer>
-        <p>📜 Meu Arquivo de Memória</p>
-        <p class="footer-sub">Guardando momentos especiais desde agora</p>
-    </footer>
-
     <script src="script.js"></script>
+    <script>
+        document.getElementById('formLogin').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value.trim();
+            const senha = document.getElementById('senha').value;
+            if (email && senha.length >= 4) {
+                localStorage.setItem('aprendeMaisUser', JSON.stringify({ email: email, logado: true }));
+                window.location.href = 'aulas.html';
+            } else {
+                document.getElementById('erroLogin').style.display = 'block';
+            }
+        });
+    </script>
 </body>
 </html>
