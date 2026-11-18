@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matemática — Aprende Mais</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -20,59 +18,99 @@
     </nav>
 
     <main class="container">
-        <header class="page-header materia-header matematica">
+        <header class="page-header">
             <a href="aulas.html" class="voltar">← Voltar às matérias</a>
             <h1>📐 Matemática</h1>
-            <p>Aulas e atividades organizadas por tema</p>
+            <p>Leia a aula e depois faça o quiz</p>
         </header>
 
-        <section class="lista-atividades">
-            <article class="card-atividade">
-                <div class="num">1</div>
-                <div class="info">
-                    <h3>Números e operações</h3>
-                    <p>Frações, potências e ordem das operações.</p>
-                    <span class="tag">Aula + exercícios</span>
-                </div>
-            </article>
-            <article class="card-atividade">
-                <div class="num">2</div>
+        <div class="lista-aulas" id="listaAulas">
+            <article class="card-aula" data-aula="0">
+                <div class="num azul">1</div>
                 <div class="info">
                     <h3>Equações do 1º grau</h3>
-                    <p>Resolução e problemas do cotidiano.</p>
-                    <span class="tag">Exercícios</span>
+                    <p>Como resolver equações simples</p>
+                    <span class="tag">Aula + Quiz</span>
                 </div>
+                <button class="btn-abrir">Abrir</button>
             </article>
-            <article class="card-atividade">
-                <div class="num">3</div>
+            <article class="card-aula" data-aula="1">
+                <div class="num azul">2</div>
                 <div class="info">
-                    <h3>Geometria plana</h3>
-                    <p>Áreas e perímetros de figuras básicas.</p>
-                    <span class="tag">Aula teórica</span>
+                    <h3>Áreas e perímetros</h3>
+                    <p>Retângulo, triângulo e círculo</p>
+                    <span class="tag">Aula + Quiz</span>
                 </div>
+                <button class="btn-abrir">Abrir</button>
             </article>
-            <article class="card-atividade">
-                <div class="num">4</div>
+            <article class="card-aula" data-aula="2">
+                <div class="num azul">3</div>
                 <div class="info">
-                    <h3>Funções</h3>
-                    <p>Conceito de função e gráficos simples.</p>
-                    <span class="tag">Aula + exercícios</span>
+                    <h3>Porcentagem</h3>
+                    <p>Cálculos do dia a dia</p>
+                    <span class="tag">Aula + Quiz</span>
                 </div>
+                <button class="btn-abrir">Abrir</button>
             </article>
-            <article class="card-atividade">
-                <div class="num">5</div>
-                <div class="info">
-                    <h3>Porcentagem e juros</h3>
-                    <p>Cálculos financeiros do dia a dia.</p>
-                    <span class="tag">Atividade prática</span>
+        </div>
+
+        <div id="areaAula" class="area-aula" style="display:none;">
+            <button class="btn-voltar-lista" id="btnVoltarLista">← Voltar à lista</button>
+            <div class="conteudo-aula" id="conteudoAula"></div>
+            <div class="quiz-box" id="quizBox">
+                <h2>🎮 Quiz</h2>
+                <div id="quizPergunta"></div>
+                <div id="quizOpcoes" class="quiz-opcoes"></div>
+                <div id="quizFeedback" class="quiz-feedback" style="display:none;"></div>
+                <div id="quizRodape" class="quiz-rodape">
+                    <span id="quizProgresso"></span>
+                    <button id="btnProxima" class="btn-primario" style="display:none;">Próxima</button>
+                    <button id="btnVerResultado" class="btn-primario" style="display:none;">Ver resultado</button>
                 </div>
-            </article>
-        </section>
+                <div id="quizResultado" class="quiz-resultado" style="display:none;"></div>
+            </div>
+        </div>
     </main>
 
-    <footer class="footer">
-        <p>📚 Aprende Mais &mdash; Matemática</p>
-    </footer>
+    <footer class="footer"><p>📚 Aprende Mais &mdash; Matemática</p></footer>
     <script src="script.js"></script>
+    <script>
+        const AULAS = [
+            {
+                titulo: "Equações do 1º grau",
+                texto: `<p>Uma equação do 1º grau tem a forma <strong>ax + b = c</strong>.</p>
+                <p>Exemplo: 2x + 4 = 10 → 2x = 6 → <strong>x = 3</strong>.</p>
+                <p>Isole o x passando os números para o outro lado com a operação inversa.</p>`,
+                perguntas: [
+                    { q: "Em 2x + 4 = 10, o valor de x é:", opcoes: ["2", "3", "4", "6"], correta: 1 },
+                    { q: "Para isolar x em ax + b = c, o primeiro passo é:", opcoes: ["Dividir por a", "Passar b para o outro lado", "Multiplicar por b", "Ignorar b"], correta: 1 },
+                    { q: "3x = 12 ⇒ x = ?", opcoes: ["3", "4", "9", "36"], correta: 1 }
+                ]
+            },
+            {
+                titulo: "Áreas e perímetros",
+                texto: `<p><strong>Retângulo</strong>: área = base × altura; perímetro = 2(b + h).</p>
+                <p><strong>Triângulo</strong>: área = (base × altura) / 2.</p>
+                <p><strong>Círculo</strong>: área = π r²; comprimento = 2 π r.</p>`,
+                perguntas: [
+                    { q: "Área do retângulo 5 × 3:", opcoes: ["8", "15", "16", "30"], correta: 1 },
+                    { q: "Área do triângulo é (base × altura) dividido por:", opcoes: ["1", "2", "3", "4"], correta: 1 },
+                    { q: "Área do círculo usa a fórmula:", opcoes: ["2 π r", "π r²", "r²", "π + r"], correta: 1 }
+                ]
+            },
+            {
+                titulo: "Porcentagem",
+                texto: `<p><strong>Porcentagem</strong> é uma fração de 100. Ex.: 25% = 25/100 = 0,25.</p>
+                <p>Para calcular X% de um valor: multiplique o valor por (X/100).</p>
+                <p>Ex.: 10% de 200 = 20.</p>`,
+                perguntas: [
+                    { q: "10% de 200 é:", opcoes: ["10", "20", "2", "200"], correta: 1 },
+                    { q: "50% de um número é o mesmo que:", opcoes: ["O dobro", "A metade", "O triplo", "Zero"], correta: 1 },
+                    { q: "25% em decimal é:", opcoes: ["25", "2,5", "0,25", "0,025"], correta: 2 }
+                ]
+            }
+        ];
+        iniciarMateria(AULAS, 'azul');
+    </script>
 </body>
 </html>

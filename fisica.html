@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Física — Aprende Mais</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -20,59 +18,99 @@
     </nav>
 
     <main class="container">
-        <header class="page-header materia-header fisica">
+        <header class="page-header">
             <a href="aulas.html" class="voltar">← Voltar às matérias</a>
             <h1>⚡ Física</h1>
-            <p>Aulas e atividades organizadas por tema</p>
+            <p>Leia a aula e depois faça o quiz</p>
         </header>
 
-        <section class="lista-atividades">
-            <article class="card-atividade">
-                <div class="num">1</div>
+        <div class="lista-aulas" id="listaAulas">
+            <article class="card-aula" data-aula="0">
+                <div class="num laranja">1</div>
                 <div class="info">
                     <h3>Movimento e velocidade</h3>
-                    <p>MRU, velocidade média e gráficos.</p>
-                    <span class="tag">Aula teórica</span>
+                    <p>MRU e velocidade média</p>
+                    <span class="tag">Aula + Quiz</span>
                 </div>
+                <button class="btn-abrir">Abrir</button>
             </article>
-            <article class="card-atividade">
-                <div class="num">2</div>
+            <article class="card-aula" data-aula="1">
+                <div class="num laranja">2</div>
                 <div class="info">
-                    <h3>Forças e leis de Newton</h3>
-                    <p>As três leis e aplicações no dia a dia.</p>
-                    <span class="tag">Aula + exercícios</span>
+                    <h3>Leis de Newton</h3>
+                    <p>As três leis do movimento</p>
+                    <span class="tag">Aula + Quiz</span>
                 </div>
+                <button class="btn-abrir">Abrir</button>
             </article>
-            <article class="card-atividade">
-                <div class="num">3</div>
+            <article class="card-aula" data-aula="2">
+                <div class="num laranja">3</div>
                 <div class="info">
-                    <h3>Energia e trabalho</h3>
-                    <p>Energia cinética, potencial e conservação.</p>
-                    <span class="tag">Exercícios</span>
+                    <h3>Energia</h3>
+                    <p>Cinética, potencial e conservação</p>
+                    <span class="tag">Aula + Quiz</span>
                 </div>
+                <button class="btn-abrir">Abrir</button>
             </article>
-            <article class="card-atividade">
-                <div class="num">4</div>
-                <div class="info">
-                    <h3>Óptica básica</h3>
-                    <p>Reflexão, refração e espelhos.</p>
-                    <span class="tag">Aula teórica</span>
+        </div>
+
+        <div id="areaAula" class="area-aula" style="display:none;">
+            <button class="btn-voltar-lista" id="btnVoltarLista">← Voltar à lista</button>
+            <div class="conteudo-aula" id="conteudoAula"></div>
+            <div class="quiz-box" id="quizBox">
+                <h2>🎮 Quiz</h2>
+                <div id="quizPergunta"></div>
+                <div id="quizOpcoes" class="quiz-opcoes"></div>
+                <div id="quizFeedback" class="quiz-feedback" style="display:none;"></div>
+                <div id="quizRodape" class="quiz-rodape">
+                    <span id="quizProgresso"></span>
+                    <button id="btnProxima" class="btn-primario" style="display:none;">Próxima</button>
+                    <button id="btnVerResultado" class="btn-primario" style="display:none;">Ver resultado</button>
                 </div>
-            </article>
-            <article class="card-atividade">
-                <div class="num">5</div>
-                <div class="info">
-                    <h3>Eletricidade introdutória</h3>
-                    <p>Corrente, tensão e circuitos simples.</p>
-                    <span class="tag">Atividade prática</span>
-                </div>
-            </article>
-        </section>
+                <div id="quizResultado" class="quiz-resultado" style="display:none;"></div>
+            </div>
+        </div>
     </main>
 
-    <footer class="footer">
-        <p>📚 Aprende Mais &mdash; Física</p>
-    </footer>
+    <footer class="footer"><p>📚 Aprende Mais &mdash; Física</p></footer>
     <script src="script.js"></script>
+    <script>
+        const AULAS = [
+            {
+                titulo: "Movimento e velocidade",
+                texto: `<p><strong>Velocidade média</strong> = distância ÷ tempo. Unidade no SI: m/s.</p>
+                <p>No <strong>MRU</strong> (movimento retilíneo uniforme) a velocidade é constante.</p>
+                <p>Fórmula: <strong>v = Δs / Δt</strong>.</p>`,
+                perguntas: [
+                    { q: "Velocidade média é:", opcoes: ["Tempo ÷ distância", "Distância ÷ tempo", "Força × massa", "Massa ÷ volume"], correta: 1 },
+                    { q: "No MRU a velocidade é:", opcoes: ["Zero", "Sempre aumentando", "Constante", "Negativa"], correta: 2 },
+                    { q: "Unidade de velocidade no SI:", opcoes: ["km/h", "m/s", "N", "J"], correta: 1 }
+                ]
+            },
+            {
+                titulo: "Leis de Newton",
+                texto: `<p><strong>1ª lei</strong> (inércia): um corpo tende a manter seu estado de repouso ou movimento uniforme.</p>
+                <p><strong>2ª lei</strong>: F = m × a (força = massa × aceleração).</p>
+                <p><strong>3ª lei</strong>: ação e reação — forças iguais e opostas.</p>`,
+                perguntas: [
+                    { q: "F = m × a é a:", opcoes: ["1ª lei", "2ª lei", "3ª lei", "Lei da gravidade"], correta: 1 },
+                    { q: "A 3ª lei fala de:", opcoes: ["Inércia", "Ação e reação", "Energia", "Velocidade"], correta: 1 },
+                    { q: "Inércia é a tendência de:", opcoes: ["Parar sempre", "Manter o estado de movimento ou repouso", "Acelerar sozinho", "Flutuar"], correta: 1 }
+                ]
+            },
+            {
+                titulo: "Energia",
+                texto: `<p><strong>Energia cinética</strong>: energia do movimento (Ec = ½ m v²).</p>
+                <p><strong>Energia potencial gravitacional</strong>: Ep = m g h.</p>
+                <p>A energia mecânica total se conserva na ausência de atrito.</p>`,
+                perguntas: [
+                    { q: "Energia do movimento se chama:", opcoes: ["Potencial", "Cinética", "Térmica", "Química"], correta: 1 },
+                    { q: "Ep = m g h é energia:", opcoes: ["Cinética", "Elétrica", "Potencial gravitacional", "Sonora"], correta: 2 },
+                    { q: "Sem atrito, a energia mecânica:", opcoes: ["Some", "Aumenta sempre", "Se conserva", "Vira só calor"], correta: 2 }
+                ]
+            }
+        ];
+        iniciarMateria(AULAS, 'laranja');
+    </script>
 </body>
 </html>
